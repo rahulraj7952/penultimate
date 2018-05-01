@@ -163,9 +163,9 @@ class HomePage extends React.Component{
 						
 					</Row>
 					<Row>	
-						<MultipleItemCarousel title={"Recommended"} articles={this.props.genre1.articles}/>
-						<MultipleItemCarousel title={"Horror"} articles={this.props.genre1.articles}/>
-						<MultipleItemCarousel title={"Adventure"}articles={this.props.genre1.articles}/>
+						<MultipleItemCarousel title={"Recommended"} title= "Recommended" articles={this.props.genre1.articles}/>
+						<MultipleItemCarousel title={"Horror"} title = "Horror" articles={this.props.genre1.articles}/>
+						<MultipleItemCarousel title={"Adventure"} title ="Adventure" articles={this.props.genre1.articles}/>
 					</Row>
 				</Grid>		
 				<Grid>

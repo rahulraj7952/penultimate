@@ -5,42 +5,57 @@ import axios from 'axios';
 import HomePageCard from './HomePageCard';
 import './HomePageStyle.css';
 import {connect} from 'react-redux';
+import MultipleItemCarousel from '../MultipleItemCarousel';
+import agent from '../../agent';
+import {
+  HOME_PAGE_LOADED,
+  HOME_PAGE_UNLOADED,
+} from '../../constants/actionTypes';
+import Icon from 'react-icons-kit';
+import { pen } from 'react-icons-kit/icomoon/pen';
+import { eye} from 'react-icons-kit/icomoon/eye';
+import { starEmpty} from 'react-icons-kit/icomoon/starEmpty';
 
 const mapStateToProps = state => ({
-  ...state.articleList,
+	
+  ...state.home,
+  ...state.common,
   token: state.common.token
 });
 
+const mapDispatchToProps = dispatch => ({
+  onLoad: (payload) =>{
+    dispatch({ type: HOME_PAGE_LOADED, payload })},
+  onUnload: () =>
+    dispatch({  type: HOME_PAGE_UNLOADED })
+});
+
+
 
 class HomePage extends React.Component{
-	constructor(props, context) {
-    super(props, context);
-
-    
-
-    this.state = {
-      notes:[],
-    };
+	
+ componentWillMount() {
+	 console.log(this.props.currentUser);
+	
+  this.props.onLoad(Promise.all([
+      agent.Articles.byGenre("horror"),
+      agent.Articles.byAuthor("person3")
+    ]));
   }
- 
-  
-  componentDidMount() {
-    axios.get('/notes')
-      .then(res => {
-        const notes = res.data;
-        this.setState({ notes });
-       
-      })
-  }
-  
+
+
 	render(){
+		
+		if(this.props.homePagePosts.articles && this.props.genre1.articles){
+			const homePagePosts=this.props.homePagePosts;
+			const genre1=this.props.genre1;
+			 
 		return(
 				<div>
-				<br/>
-				<Grid>
+			{/*	<Grid>
 					<Col>
 						<div className="wrapper" >
-							<img  className="mainpage-picture" src="https://mariamsreads.files.wordpress.com/2015/10/bigstock-old-books-on-a-wooden-shelf-52703338.jpg?w=1200&h=400&crop=1"/>
+							<img  className="mainpage-picture" src="http://via.placeholder.com/1300x300"/>
 							<div className="description">
 								<p class='description_content'>Get Discovered</p>
 							</div>
@@ -48,7 +63,111 @@ class HomePage extends React.Component{
 						</div>					
 					<hr/>
 					</Col>
-				</Grid>			
+				</Grid>	*/}
+				
+				<Grid>
+					<Row className="home-container">
+						<Col md={6}>
+							<h4>Featured</h4>
+							<hr/>	
+							 <Media>
+								
+								<Media.Body>
+								<Col>
+								<Media.Heading>Media Heading</Media.Heading>
+								
+								<h5><Icon size={14} icon={pen}/> Joe Root</h5>
+								<h5> #3 in Fantasy </h5>
+								<h6><Icon size={14} icon={eye}/> 3.4k <Icon size={14} icon={starEmpty}/> 4.6 </h6>
+								<br/>
+								
+								<p>	Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante 
+								sollicitudin commodo. Cras purus odio, vestibulum in vulputate at,tempus viverra 
+								turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue 
+								felis in faucibus ras sit amet nibh libero, in gravida nulla. 
+								</p>
+								</Col>
+								</Media.Body>
+									<Media.Right>
+									<img width={200} height={300} src="https://images-na.ssl-images-amazon.com/images/I/81hZPqv7zvL.jpg" alt="thumbnail" />
+								</Media.Right>
+							</Media>
+							<hr/>
+						</Col>
+						<Col md={3}>
+							<h5>Trending</h5>
+							 <Media>
+								
+								<Media.Body>
+								<h4>Media Heading </h4>
+								<h6> by Joe Root </h6>
+								
+								<p>	Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante 
+								sollicitudin commodo.
+								</p>
+								</Media.Body>
+								<Media.Right>
+									<img width={100} height={150} src="http://wordwenches.typepad.com/.a/6a00d8341c84c753ef0176159a1195970c-800wi" alt="thumbnail" />
+								</Media.Right>
+							</Media>
+							<Media>
+								
+								<Media.Body>
+								<h4>Media Heading </h4>
+								<h6></h6>
+								
+								<p>	Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante 
+								</p>
+								</Media.Body>
+								<Media.Right>
+									<img width={100} height={150} src="https://99designs-blog.imgix.net/wp-content/uploads/2017/01/enceladus.jpg?auto=format&q=60&fit=max&w=930" alt="thumbnail" />
+								</Media.Right>
+							</Media>
+						</Col>
+						<Col md={3}>
+							<h5>Top of the Charts</h5>
+							 <Media>
+								
+								<Media.Body>
+								<h5>Media Heading </h5>
+								<h6> by Joe Root </h6>
+								
+								<p>	Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisqu
+								</p>
+								</Media.Body>
+							</Media>
+							<Media>
+								
+								<Media.Body>
+								<h5>Media Heading </h5>
+								<h6> by Joe Root </h6>
+								
+								<p>	Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante 
+								</p>
+								</Media.Body>
+								
+							</Media>
+							<Media>
+								
+								<Media.Body>
+								<h5>Media Heading </h5>
+								<h6> by Joe Root </h6>
+								
+								<p>	Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante 
+								</p>
+								</Media.Body>
+								
+							</Media>
+						</Col>
+						
+						
+					</Row>
+					<Row>	
+						<MultipleItemCarousel title={"Recommended"} title= "Recommended" articles={this.props.genre1.articles}/>
+						<MultipleItemCarousel title={"Horror"} title = "Horror" articles={this.props.genre1.articles}/>
+						<MultipleItemCarousel title={"Adventure"} title ="Adventure" articles={this.props.genre1.articles}/>
+					</Row>
+				</Grid>		
 				<Grid>
 					<hr/>
 					<Row>
@@ -58,20 +177,22 @@ class HomePage extends React.Component{
 						
 					</Row>
 					<br/>
-					<Row className="row-eq-height">
-					<Col >
-        			 { this.state.notes.map(note => <div><HomePageCard note={note}  /></div>)}
-      			</Col>
-      			</Row>
+        			<ul>
+        			 { this.props.homePagePosts.articles.map(note => <div><HomePageCard note={note} key={note.slug}/></div>)}
+      		</ul>
+      			
+      			
 				<br/>
 					
 				</Grid>
 				
 				</div>
+				
 
     	
-    	)
+    	)}
+    	else return(<div>nothing</div>)
 	}
 	}
 	
-	export default connect(mapStateToProps)(HomePage);
+	export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

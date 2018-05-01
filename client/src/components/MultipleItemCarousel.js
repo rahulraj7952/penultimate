@@ -19,10 +19,12 @@ export default class MultipleItemsCarousel extends Component {
     };
     
     return (
-   
+   <div>
+	<h3 className="mainpage-subheading">{this.props.title}</h3>
      <Slider {...settings}>
          { this.props.articles.map(article => <div><ListComponent article={article} key={article.slug}/></div>)}
       </Slider>
+	</div>
       
      
     );
