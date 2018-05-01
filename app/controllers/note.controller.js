@@ -33,7 +33,7 @@ exports.create = function(req, res) {
    
 }
 
-exports.findAll = function(req, res) {
+exports.findAll = function(req, res, next) {
   var query = {};
   
   var limit = 20;
@@ -42,9 +42,6 @@ exports.findAll = function(req, res) {
   if(typeof req.query.limit !== 'undefined'){
     limit = req.query.limit;
   }
-	console.log("get")
-	//console.log(req.payload)
-	//console.log(req.payload)
   if(typeof req.query.offset !== 'undefined'){
     offset = req.query.offset;
   }
@@ -95,8 +92,8 @@ exports.findAll = function(req, res) {
         }),
         articlesCount: articlesCount
       });
-    });
-  })
+    })
+  }).catch(next);
 };
 
 exports.findOne = function(req, res, next) {

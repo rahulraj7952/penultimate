@@ -6,9 +6,15 @@ var util= require('util');
 // create express app
 const storage =require('node-persist');
 var app = express();
-
+var session = require('express-session');
+var passport = require('passport');
 var cors = require('cors');
 app.use(cors());
+
+app.use(require('morgan')('dev'));
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(require('method-override')());
 
 // Configuring the database
 var dbConfig = require('./config/database.config.js');
@@ -16,7 +22,7 @@ var mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect(dbConfig.url);
+mongoose.connect("mongodb://admin:1234@ds263759.mlab.com:63759/easy-notes");
 
 mongoose.connection.on('error', function() {
     console.log('Could not connect to the database. Exiting now...');
@@ -26,6 +32,8 @@ mongoose.connection.on('error', function() {
 mongoose.connection.once('open', function() {
     console.log("Successfully connected to the database");
 })
+
+app.use(session({ secret: 'conduit', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false  }));
 
 
 storage.init({
@@ -39,7 +47,7 @@ storage.init({
   console.log('storage initialization failed');
   console.error(e);
 });
-
+app.use(express.static('client/build'));
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -60,18 +68,15 @@ app.post('/content', (req, res) => {
 
 
 
-app.post('/tokensignin', (req, res) => {
-  storage.setItem('content', req.body.content, (err, val) => {
-    console.log(val.content)
-  });
-});
 
 // define a simple route
-app.get('/', function(req, res){
-    res.json({"message": "Welcome to my first application. Get reviewed. Find a publisher. "});
+app.get('*', function(req, res){
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 });
-
+require('./app/routes/user.routes.js')(app);
 require('./app/routes/note.routes.js')(app);
+require('./config/passport');
+
 
 
 

@@ -9,6 +9,7 @@ var app = express();
 var session = require('express-session');
 var passport = require('passport');
 var cors = require('cors');
+var path=require('path');
 app.use(cors());
 
 app.use(require('morgan')('dev'));
@@ -22,7 +23,7 @@ var mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect(dbConfig.url);
+mongoose.connect("mongodb://admin:1234@ds263759.mlab.com:63759/easy-notes");
 
 mongoose.connection.on('error', function() {
     console.log('Could not connect to the database. Exiting now...');
@@ -47,7 +48,7 @@ storage.init({
   console.log('storage initialization failed');
   console.error(e);
 });
-
+app.use(express.static('client/build'));
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -70,8 +71,8 @@ app.post('/content', (req, res) => {
 
 
 // define a simple route
-app.get('/', function(req, res){
-    res.json({"message": "Welcome to my first application. Get reviewed. Find a publisher. "});
+app.get('*', function(req, res){
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 });
 require('./app/routes/user.routes.js')(app);
 require('./app/routes/note.routes.js')(app);
