@@ -5,7 +5,8 @@ import {
   ASYNC_START,
   ADD_TAG,
   REMOVE_TAG,
-  UPDATE_FIELD_EDITOR
+  UPDATE_FIELD_EDITOR,
+  UPDATE_MAIN_EDITOR
 } from '../constants/actionTypes';
 
 export default (state = {}, action) => {
@@ -46,6 +47,12 @@ export default (state = {}, action) => {
       };
     case UPDATE_FIELD_EDITOR:
       return { ...state, [action.key]: action.value };
+    case UPDATE_MAIN_EDITOR:
+		return {
+			...state,
+			html:action.html,
+			text:action.text
+			}
     default:
       return state;
   }

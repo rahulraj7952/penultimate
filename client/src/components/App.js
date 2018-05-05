@@ -19,6 +19,7 @@ import Header from './Header';
 import Register from './Register';
 import Settings from './Settings';
 import Listing from './Listing';
+import DraftEditor from './DraftEditor';
 import agent from '../agent';
 import { connect } from 'react-redux';
 import { APP_LOAD, REDIRECT } from '../constants/actionTypes';
@@ -77,6 +78,7 @@ return(
 		<Route path= "/login" component={Login}/>
 		<Route path="/signup" component={Register}/>
 		<Route path="/settings" component={Settings}/>
+		<Route path="/editor" component={DraftEditor}/>
 		<Route exact path="/" component={HomePage}/>
 		</Switch>
  

@@ -10,7 +10,7 @@ exports.create = function(req, res) {
 	
     var note = new Note(req.body.article);
 	
-	
+	console.log(req.body.article);
 	User.findById(req.payload.id).then(function(user){
     if (!user) { console.log("no user");
 		return res.sendStatus(401); }

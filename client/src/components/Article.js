@@ -143,7 +143,7 @@ const title = 'GitHub';
 		<br/>
 			<Row>
 				<Col md={6} mdOffset={2} >		
-					{this.props.article.content}
+					<Content/>
 				</Col>
 				<Col md={3} className="right-recommend">
 					<h5 > Recommended for you</h5>

@@ -1,4 +1,4 @@
-import React from 'react';
+	import React from 'react';
 import agent from '../agent';
 import { connect } from 'react-redux';
 import {
@@ -9,6 +9,8 @@ import {
   EDITOR_PAGE_UNLOADED,
   UPDATE_FIELD_EDITOR
 } from '../constants/actionTypes';
+import {Link} from 'react-router-dom';
+import DraftEditor from './DraftEditor';
 
 const mapStateToProps = state => ({
   ...state.editor
@@ -27,6 +29,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch({ type: EDITOR_PAGE_UNLOADED }),
   onUpdateField: (key, value) =>
     dispatch({ type: UPDATE_FIELD_EDITOR, key, value })
+   
 });
 
 class Editor extends React.Component {
@@ -51,18 +54,21 @@ class Editor extends React.Component {
     this.removeTagHandler = tag => () => {
       this.props.onRemoveTag(tag);
     };
+    
+    
 
     this.submitForm = ev => {
       ev.preventDefault();
       const article = {
        title:this.props.title, 
         description: this.props.description, 
-        content:this.props.body ,
+        contentState: this.props.html,
+        content:this.props.text ,
         genre:this.props.genre, 
         //author:this.props.currentUser.username, 
         imageurl: "http://via.placeholder.com/300x200"
       };
-
+		console.log(article);
       const slug = { slug: this.props.articleSlug };
        const promise = this.props.articleSlug ?
         agent.Articles.update(Object.assign(article, slug)) :
@@ -108,7 +114,7 @@ class Editor extends React.Component {
 
                   <fieldset className="form-group">
                     <input
-                      className="form-control form-control-lg"
+                      className="form-control"
                       type="text"
                       placeholder="Article Title"
                       value={this.props.title}
@@ -124,7 +130,7 @@ class Editor extends React.Component {
                       onChange={this.changeDescription} />
                   </fieldset>
 
-                  <fieldset className="form-group">
+                  {/*<fieldset className="form-group">
                     <textarea
                       className="form-control"
                       rows="8"
@@ -132,16 +138,16 @@ class Editor extends React.Component {
                       value={this.props.body}
                       onChange={this.changeBody}>
                     </textarea>
-                  </fieldset>
+                  </fieldset>*/}
                   
                    <fieldset className="form-group">
-                    <textarea
-                      className="form-control"
+                    <input
+                      className="form-control form-control-lg"
                       type = "text"
                       placeholder="Mention the genre"
                       value={this.props.genre}
-                      onChange={this.changeGenre}>
-                    </textarea>
+                      onChange={this.changeGenre}/>
+                    
                   </fieldset>
 
 
@@ -169,18 +175,18 @@ class Editor extends React.Component {
                       }
                     </div>
                   </fieldset>
+                  <DraftEditor/>	
 
                   <button
-                    className="btn btn-lg pull-xs-right btn-primary"
+                    className="btn pull-xs-right btn-primary"
                     type="button"
                     disabled={this.props.inProgress}
                     onClick={this.submitForm}>
-                    Publish Article
+                    Publish
                   </button>
-
+				
                 </fieldset>
               </form>
-
             </div>
           </div>
         </div>

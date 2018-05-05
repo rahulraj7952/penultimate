@@ -8,6 +8,8 @@
     "cross-env": "^5.1.4",
     "draft-js": "^0.10.5",
     "draft-js-export-html": "^1.2.0",
+    "draft-js-inline-toolbar-plugin": "^2.0.3",
+    "draft-js-plugins-editor": "^2.0.8",
     "formidable": "^1.2.1",
     "history": "^4.7.2",
     "jwt-decode": "^2.2.0",
