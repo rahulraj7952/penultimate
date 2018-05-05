@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/lib/Nav';
 import MenuItem from 'react-bootstrap/lib/MenuItem';
 import NavDropdown from 'react-bootstrap/lib/NavDropdown';
 import NavItem from 'react-bootstrap/lib/NavItem';		
-import {Row, Col, Grid , FormGroup, FormControl, Button} from 'react-bootstrap';
+import {Row, Col, Grid , FormGroup, FormControl,Media, Image, Button} from 'react-bootstrap';
 import './HeaderStyle.css';
 import {
   BrowserRouter as Router,
@@ -16,6 +16,8 @@ import {
 import ShortStories from './ShortStories';
 import MyEditor from './MyEditor';
 import Dropdown from './Dropdown';
+import { bell} from 'react-icons-kit/icomoon/bell';
+import Icon from 'react-icons-kit';
 
 const LoggedOutView=props=>{
 	if(!props.currentUser){
@@ -77,11 +79,19 @@ const LoggedInView=props =>{
 							Write
 						</Link>
 					</NavItem>
-					<NavItem>
-						<Link to='/dashboard' className="link">
-							Dashboard
-						</Link>
-					</NavItem>
+					<NavDropdown title="Find" id="basic-nav-dropdown" >
+					
+					
+							<MenuItem>
+								<Link to='/listing/agents' className="link" >Agents</Link>
+							</MenuItem>
+							<MenuItem >
+								<Link to='/listing/publishers' className="link">Publishers</Link>
+							</MenuItem>
+							<MenuItem >
+								<Link to='/listing/editors' className="link">Editors</Link>
+							</MenuItem>
+					</NavDropdown>
 					<NavDropdown title="Browse" id="basic-nav-dropdown" 	>
 					
 					<Row className="dropdown-multi">
@@ -138,19 +148,44 @@ const LoggedInView=props =>{
 					</NavDropdown>
     			</Nav>
     			<Nav pullRight>
-					<NavDropdown title="Find" id="basic-nav-dropdown" 	>
+					<NavDropdown title={
+                    <div className="pull-left">
+                        <Icon size={18} icon={bell}/>
+                    </div>} id="basic-nav-dropdown" >
+						<MenuItem className="notification-card">
+								<div >
+									<Media>
+										<Media.Left>
+											<Image width={48} height={48} src="http://www.fiat500owners.com/forum/attachment.php?attachmentid=4220&d=1461347917" alt="thumbnail" circle/>
+										</Media.Left>
+										<Media.Body>
+											
+												<p>Nakul Yadav posted a new story.</p>
+												<p><i>1 minute ago</i></p>
+										</Media.Body>
+									</Media>
+								</div>
+						</MenuItem>
+						<MenuItem className="notification-card">
+								<div >
+									<Media>
+										<Media.Left>
+											<Image width={48} height={48}  src="https://static.toiimg.com/photo/61261856.cms" alt="thumbnail" circle/>
+										</Media.Left>
+										<Media.Body>
+											
+												<p>Sunny Leone posted a new video.</p>	
+												<p><i>19 minutes ago</i></p>
+										</Media.Body>
+									</Media>
+								</div>
+						</MenuItem>
 					
 					
-							<MenuItem>
-								<Link to='/listing/agents' className="link" >Agents</Link>
-							</MenuItem>
-							<MenuItem >
-								<Link to='/listing/publishers' className="link">Publishers</Link>
-							</MenuItem>
-							<MenuItem >
-								<Link to='/listing/editors' className="link">Editors</Link>
-							</MenuItem>
+							
 					</NavDropdown>
+					
+					
 					
 					<NavItem>
 						<Link to={`/@${props.currentUser.username}`} className="link">
