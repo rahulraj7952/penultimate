@@ -46,7 +46,7 @@ NoteSchema.methods.toJSONFor = function(user){
     tagList: this.tagList,
     favorited: user ? user.isFavorite(this._id) : false,
     favoritesCount: this.favoritesCount,
-    author: this.author.toProfileJSONFor(user)
+    author: user?this.author.toProfileJSONFor(user):this.author
   };
 };
 

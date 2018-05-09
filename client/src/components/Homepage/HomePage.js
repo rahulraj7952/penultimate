@@ -35,11 +35,10 @@ const mapDispatchToProps = dispatch => ({
 class HomePage extends React.Component{
 	
  componentWillMount() {
-	 console.log(this.props.currentUser);
-	
+	 console.log(this.props.currentUser)
   this.props.onLoad(Promise.all([
       agent.Articles.byGenre("horror"),
-      agent.Articles.byAuthor(this.props.currentUser)
+      agent.Articles.byAuthor("person1")
     ]));
   }
 

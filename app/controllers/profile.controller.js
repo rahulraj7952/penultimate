@@ -29,35 +29,39 @@ else {
 
 exports.follow=function(req, res, next){
 	var profileId ;
- User.findOne({username: req.params.username}).then(function(user){
-    if (!user) { return res.sendStatus(404); }
-	req.profile = user;
+
+ User.findOne({username: req.params.username}).then(function(person){
+    if (!person) { return res.sendStatus(404); }
+	req.profile = person;
 	profileId = req.profile._id;
-})
+
 
   User.findById(req.payload.id).then(function(user){
     if (!user) { return res.sendStatus(401); }
-
+    console.log("followers", person.followers, person.username, user._id)
+	person.addFollower(user.id);
     return user.follow(profileId).then(function(){
       return res.json({profile: req.profile.toProfileJSONFor(user)});
     });
+});
   }).catch(next);
 };
 
 exports.unfollow=function(req, res, next){
   var profileId;
   
-  User.findOne({username: req.params.username}).then(function(user){
-    if (!user) { return res.sendStatus(404); }
-	req.profile = user;
+  User.findOne({username: req.params.username}).then(function(person){
+    if (!person) { return res.sendStatus(404); }
+	req.profile = person;
 	profileId = req.profile._id;
-})
+
 
   User.findById(req.payload.id).then(function(user){
     if (!user) { return res.sendStatus(401); }
-
+	person.removeFollower(user.id)
     return user.unfollow(profileId).then(function(){
       return res.json({profile: req.profile.toProfileJSONFor(user)});
     });
+});
   }).catch(next);
 };

@@ -33,9 +33,9 @@ const FollowUserButton = props => {
 
   let classes = 'btn btn-sm action-btn';
   if (props.user.following) {
-    classes += ' btn-secondary';
+    classes += ' btn-primary';
   } else {
-    classes += ' btn-outline-secondary';
+    classes += ' btn-outline-primary';
   }
 
   const handleClick = ev => {

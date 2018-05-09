@@ -14,13 +14,15 @@ import {
   PROFILE_FAVORITES_PAGE_UNLOADED,
   SETTINGS_PAGE_UNLOADED,
   LOGIN_PAGE_UNLOADED,
-  REGISTER_PAGE_UNLOADED
+  REGISTER_PAGE_UNLOADED, 
+  NEW_NOTIFICATION
 } from '../constants/actionTypes';
 
 const defaultState = {
   appName: 'Conduit',
   token: null,
-  viewChangeCounter: 0
+  viewChangeCounter: 0,
+  notifications:[]
 };
 
 export default (state = defaultState, action) => {
@@ -64,6 +66,9 @@ export default (state = defaultState, action) => {
     case LOGIN_PAGE_UNLOADED:
     case REGISTER_PAGE_UNLOADED:
       return { ...state, viewChangeCounter: state.viewChangeCounter + 1 };
+    case NEW_NOTIFICATION:
+		return {...state, notifications:state.notifications.concat(action.data)};
+
     default:
       return state;
   }

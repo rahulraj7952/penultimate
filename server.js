@@ -10,6 +10,9 @@ var session = require('express-session');
 var passport = require('passport');
 var cors = require('cors');
 var path=require('path');
+var Pusher = require('pusher');
+
+
 app.use(cors());
 
 app.use(require('morgan')('dev'));
@@ -35,6 +38,20 @@ mongoose.connection.once('open', function() {
 })
 
 app.use(session({ secret: 'conduit', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false  }));
+
+
+
+	var pusher = new Pusher({
+	  appId: '521412',
+	  key: '5e2ba289c6b150773bd4',
+	  secret: 'ba5f67a2c43b7a57831e',
+	  cluster: 'ap2',
+	  encrypted: true
+	});
+
+pusher.trigger('post', 'my-event', {
+  "message": "hello "
+});
 
 
 storage.init({

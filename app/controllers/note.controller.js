@@ -1,6 +1,7 @@
 var Note = require('../models/note.model.js');
 var Draft = require('../models/draft.model.js');
 var User = require('../models/User.js');
+var Pusher = require('pusher');
 
 exports.create = function(req, res) {
 	
@@ -16,13 +17,31 @@ exports.create = function(req, res) {
 		return res.sendStatus(401); }
 	
     note.author = user;
-    
+    console.log("users",user.followers)
      note.save(function(err, data) {
-        if(err) {
+        if(err) {		
             console.log(err);
             res.status(500).send({message: "Some error occurred while creating the Note."});
         } else {
-            res.send(data);
+			console.log(data.slug)
+			var pusher = new Pusher({
+  appId: '521412',
+  key: '5e2ba289c6b150773bd4',
+  secret: 'ba5f67a2c43b7a57831e',
+  cluster: 'ap2',
+  encrypted: true
+});
+		user.followers.forEach(function(id){	
+			pusher.trigger("my-channel-"+id, 'post', {
+  "message": user.username +" posted an article",
+  "slug": note.slug
+  
+});
+})
+
+res.status(200).json(note);
+
+            
         }
     })
     

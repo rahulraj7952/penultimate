@@ -9,15 +9,35 @@ import './HeaderStyle.css';
 import {
   BrowserRouter as Router,
   Route,
-  Link,
-  Redirect,
-  withRouter
+  Link
 } from "react-router-dom";
 import ShortStories from './ShortStories';
 import MyEditor from './MyEditor';
 import Dropdown from './Dropdown';
 import { bell} from 'react-icons-kit/icomoon/bell';
 import Icon from 'react-icons-kit';
+import { connect } from 'react-redux';		
+
+const Notification=props =>{
+	console.log(props.notification.slug)
+	return(
+	<MenuItem className="notification-card">
+								<div>
+									<Media>
+										<Media.Left>
+											<Image width={48} height={48} src="http://www.fiat500owners.com/forum/attachment.php?attachmentid=4220&d=1461347917" alt="thumbnail" circle/>
+										</Media.Left>
+										<Media.Body>
+											<Link to={`/article/${props.notification.slug}`}>
+												<p><b>{props.notification.message}</b></p>
+												<p><i>1 minute ago</i></p>
+											</Link>
+										</Media.Body>
+									</Media>
+								</div>
+						</MenuItem>
+	)
+	}					
 
 const LoggedOutView=props=>{
 	if(!props.currentUser){
@@ -63,6 +83,12 @@ return null;
 
 const LoggedInView=props =>{
 	if(props.currentUser){
+		
+		console.log("logged IN ", props.notifications);
+		var message=props.notifications?props.notifications.map(notification => <Notification notification={notification}/>):"all"
+		var newNotificationCount=(props.notifications.length>0)?<span class="badge badge-light">{props.notifications.length}</span>:""
+		
+		
 		return(
 			<div className= "HeaderContainer" >  
 			<Navbar collapseOnSelect className="Menutab">
@@ -150,38 +176,10 @@ const LoggedInView=props =>{
     			<Nav pullRight>
 					<NavDropdown title={
                     <div className="pull-left">
-                        <Icon size={18} icon={bell}/>
+                        <Icon size={18} icon={bell}/>{newNotificationCount}
                     </div>} id="basic-nav-dropdown" >
-						<MenuItem className="notification-card">
-								<div >
-									<Media>
-										<Media.Left>
-											<Image width={48} height={48} src="http://www.fiat500owners.com/forum/attachment.php?attachmentid=4220&d=1461347917" alt="thumbnail" circle/>
-										</Media.Left>
-										<Media.Body>
-											
-												<p>Nakul Yadav posted a new story.</p>
-												<p><i>1 minute ago</i></p>
-										</Media.Body>
-									</Media>
-								</div>
-						</MenuItem>
-						<MenuItem className="notification-card">
-								<div >
-									<Media>
-										<Media.Left>
-											<Image width={48} height={48}  src="https://static.toiimg.com/photo/61261856.cms" alt="thumbnail" circle/>
-										</Media.Left>
-										<Media.Body>
-											
-												<p>Sunny Leone posted a new video.</p>	
-												<p><i>19 minutes ago</i></p>
-										</Media.Body>
-									</Media>
-								</div>
-						</MenuItem>
-					
-					
+						  {message}
+
 							
 					</NavDropdown>
 					
@@ -214,15 +212,14 @@ const LoggedInView=props =>{
 
 
 class Header extends React.Component{
-	 
-     
     
 	render(){
+		console.log("header", this.props.notifications)
 		return(
 		 <nav className="navbar navbar-light">
           <Link to="/" className="navbar-brand"></Link>
           <LoggedOutView currentUser={this.props.currentUser} />
-          <LoggedInView currentUser={this.props.currentUser} />
+          <LoggedInView currentUser={this.props.currentUser} notifications={this.props.notifications}/>
 		 </nav>
 			)
 		}

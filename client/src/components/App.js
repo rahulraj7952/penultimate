@@ -22,9 +22,10 @@ import Listing from './Listing';
 import DraftEditor from './DraftEditor';
 import agent from '../agent';
 import { connect } from 'react-redux';
-import { APP_LOAD, REDIRECT } from '../constants/actionTypes';
+import { APP_LOAD, REDIRECT, NEW_NOTIFICATION } from '../constants/actionTypes';
 import { store } from '../store';
 import { push } from 'react-router-redux';
+import Pusher from 'pusher-js';
 						
 const mapStateToProps = state => {
   return {
@@ -38,10 +39,28 @@ const mapDispatchToProps = dispatch => ({
   onLoad: (payload, token) =>
     dispatch({ type: APP_LOAD, payload, token, skipTracking: true }),
   onRedirect: () =>
-    dispatch({ type: REDIRECT })
+    dispatch({ type: REDIRECT }),
+  
+  onNewNotification:(data)=>
+	dispatch({type: NEW_NOTIFICATION, data})
 });
 
 class App extends React.Component{
+	 constructor(){
+        super();
+         this.state = {
+          posts : []
+        }
+         
+			
+		this.pusher = new Pusher("5e2ba289c6b150773bd4", {
+         cluster: 'ap2',
+         encrypted: true
+        });
+         
+	 
+        
+	}
 	
 	componentWillReceiveProps(nextProps) {
    if (nextProps.redirectTo) {
@@ -50,22 +69,55 @@ class App extends React.Component{
      this.props.onRedirect();
    }
   }
-  componentWillMount() {
+   async componentWillMount() {
+	   
     const token = window.localStorage.getItem('jwt');
     if (token) {
       agent.setToken(token);
     }
-
-    this.props.onLoad(token ? agent.Auth.current() : null, token);
-  }
+	const res=token? await agent.Auth.current():null
+     this.props.onLoad(res, token);
+    console.log("in willmount")
+     var channel;
+	  
+			console.log("print", this.props.currentUser.id)
+			channel= this.pusher.subscribe("my-channel-"+this.props.currentUser.id);
+				channel.bind('post', data => {
+				this.setState({ posts: this.state.posts.concat(data)});
+				console.log(data);
+	},this);
+  } 
+  
+  
+  
+ componentDidMount(){
+	 
+	 
+	 
+	  }
 	
 render(){
+	
+	console.log("posts", this.state.posts)
 	if (this.props.appLoaded) {
-return(	
+		//Pusher.logToConsole = true;
+	  console.log(this.props.appName);
+			if(this.props.currentUser){
+				
+				
+				
 
+	
+}
+	
+		
+		
+return(	
+		
+	
 		
 	    <div>
-	    <Header currentUser={this.props.currentUser}/>
+	    <Header currentUser={this.props.currentUser} notifications={this.state.posts}/>
 	    <Switch>
     	<Route path ="/short-stories" component = {ShortStories}/>
     	<Route path ="/write" component={MyEditor}/>
@@ -85,6 +137,7 @@ return(
     </div>
 )
 }
+else
 return (
       <div>
         <Header/>
