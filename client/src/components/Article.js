@@ -59,11 +59,11 @@ const title = 'GitHub';
           <div>
 			
 			<div  className="article-banner">
-				<h1>{this.props.article.title}</h1>
+				<h1><b>{this.props.article.title}</b></h1>
 				<h5><b>{this.props.article.genre}</b></h5>
-				<Link to={`/@${this.props.article.author.username}`} className="author">
-				<h6>{this.props.article.author.username}</h6>
-				</Link>
+				<span> by<Link to={`/@${this.props.article.author.username}`} className="author">
+				<h4>{this.props.article.author.username}</h4>
+				</Link></span>
 			</div>	
 			
             <ArticleActions canModify={canModify} article={this.props.article}/>
@@ -142,7 +142,7 @@ const title = 'GitHub';
 		<br/>
 		<br/>
 			<Row>
-				<Col md={6} mdOffset={2} >		
+				<Col md={6} mdOffset={2} className="article-body" >		
 					<Content/>
 				</Col>
 				<Col md={3} className="right-recommend">

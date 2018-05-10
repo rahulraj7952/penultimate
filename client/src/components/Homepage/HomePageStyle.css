@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 
 .cards {
     /* Add shadows to create the "card" effect */
@@ -21,34 +22,57 @@
 .card-texts {
     padding: 2px 16px;
 }
+.link{
+color:#555;
+font-size:14px;
+font-family: "Source Sans Pro";
 
-.home-container{
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+}
+
+.list-link{
+color:#555;
+font-size:14px;
+font-family: "Source Sans Pro";
+
+}
+
+
+.homepage-container{
+       margin-top:-40px;
+}
+
+.list-item{
+	background-color:#FFF;
+	padding-top: 22px;
+	padding-bottom:22px;
+	padding-right:10px;
+	padding-left:10px;
+}
+
+.main-container{
+    box-shadow: 4px 4px 8px 4px rgba(0,0,0,0.1);
     padding: 15px;
     border-left-style:solid;
     border-left-color:#EAE3EA;
     border-left-width:2px;
+    background-color:#FFF;
+    margin-top:20px;
 }
 
-.mainpage-subheading {
+.homepage-subheading {
 	text-align: center;
 	font-family: "Source+Sans+Pro";
 	color: #444;
 	margin-bottom:30px;
 	margin-top:30px;
+	
 }
 
 
 p.mainpage-subheading{
 	font-size: 22px;
 	}
-.row-eq-height {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display:         flex;
- 
-}
+
 
 .mainpage-picture {
 width: 1295px;

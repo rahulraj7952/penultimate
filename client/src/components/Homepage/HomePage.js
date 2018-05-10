@@ -45,12 +45,15 @@ class HomePage extends React.Component{
 
 	render(){
 		
-		if(this.props.homePagePosts.articles && this.props.genre1.articles){
-			const homePagePosts=this.props.homePagePosts;
-			const genre1=this.props.genre1;
+			const homePagePosts=this.props.homePagePosts.articles?this.props.homePagePosts.articles.map(note => <div><HomePageCard note={note} key={note.slug}/></div>):"loading bro"
+			
+			const genre1=this.props.genre1?<span><MultipleItemCarousel title={"Recommended"} title= "Recommended" articles={this.props.genre1.articles}/>
+						<MultipleItemCarousel title={"Horror"} title = "Horror" articles={this.props.genre1.articles}/>
+						<MultipleItemCarousel title={"Adventure"} title ="Adventure" articles={this.props.genre1.articles}/></span>:"Loading bro"
+						
 			 
 		return(
-				<div>
+				<div className="homepage-container">
 			{/*	<Grid>
 					<Col>
 						<div className="wrapper" >
@@ -65,7 +68,7 @@ class HomePage extends React.Component{
 				</Grid>	*/}
 				
 				<Grid>
-					<Row className="home-container">
+					<Row className="main-container">
 						<Col md={6}>
 							<h4>Featured</h4>
 							<hr/>	
@@ -162,9 +165,7 @@ class HomePage extends React.Component{
 						
 					</Row>
 					<Row>	
-						<MultipleItemCarousel title={"Recommended"} title= "Recommended" articles={this.props.genre1.articles}/>
-						<MultipleItemCarousel title={"Horror"} title = "Horror" articles={this.props.genre1.articles}/>
-						<MultipleItemCarousel title={"Adventure"} title ="Adventure" articles={this.props.genre1.articles}/>
+						{genre1}
 					</Row>
 				</Grid>		
 				<Grid>
@@ -177,7 +178,7 @@ class HomePage extends React.Component{
 					</Row>
 					<br/>
         			<ul>
-        			 { this.props.homePagePosts.articles.map(note => <div><HomePageCard note={note} key={note.slug}/></div>)}
+        			 {homePagePosts}
       		</ul>
       			
       			
@@ -189,8 +190,8 @@ class HomePage extends React.Component{
 				
 
     	
-    	)}
-    	else return(<div>nothing</div>)
+    	)
+    	
 	}
 	}
 	

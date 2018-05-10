@@ -1,20 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 
-.HeaderContainer{
-	font-size: 15px;
-	font-family: "Source Sans Pro";
-	
-	
-}
 
 .Menutab {
- background-color:#00D7C5;
+ background-color:#FFF;
  color: #BAF;
  
 
 }
 .link{
-color:#444;
+color:#555;
+font-size:14px;
+font-family: "Source Sans Pro";
+
 }
 
 .dropdown-multi{
@@ -28,4 +25,8 @@ color:#444;
 .dropdown-link{
 	line-height: 30px;
 	color:#111;
+}
+
+.navbar.navbar-default {
+  border-bottom: none;
 }

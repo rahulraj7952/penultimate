@@ -1,13 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 
 .article-banner{
-	background-color:#A7B3A5;
-	color: #FFF	;
+	background-color:#FFF;
+	background-image:url("https://www.publicdomainpictures.net/pictures/150000/velka/banner-header-tapete-145002399028x.jpg");
+	color: #222	;
 	font-family:"Source Sans Pro";
-	font-size: 24px;
 	width:100%;
 	padding: 25px;
 	margin-bottom: 25px;
+}
+
+.article-body{
+	font-size: 18px;
+	font-family:"Source Sans Pro";
+	
+	
+	
+
 }
 
 .delete-button{

@@ -94,7 +94,7 @@ const LoggedInView=props =>{
 			<Navbar collapseOnSelect className="Menutab">
   				<Navbar.Header>
     				<Navbar.Brand >
-      				<Link to="/" className="link"> penUltimate</Link>
+      				<Link to="/" className="link"> <strong>penUltimate</strong></Link>
     				</Navbar.Brand>
     				<Navbar.Toggle />
   				</Navbar.Header>
@@ -102,10 +102,10 @@ const LoggedInView=props =>{
     			<Nav>
 					<NavItem>
 						<Link to='/write'className="link">
-							Write
+							<strong>Write</strong>
 						</Link>
 					</NavItem>
-					<NavDropdown title="Find" id="basic-nav-dropdown" >
+					<NavDropdown title={<span className="link"><strong>Find</strong> </span>} id="basic-nav-dropdown" >
 					
 					
 							<MenuItem>
@@ -118,7 +118,7 @@ const LoggedInView=props =>{
 								<Link to='/listing/editors' className="link">Editors</Link>
 							</MenuItem>
 					</NavDropdown>
-					<NavDropdown title="Browse" id="basic-nav-dropdown" 	>
+					<NavDropdown title={<span className="link"><strong>Browse</strong> </span>} id="basic-nav-dropdown" 	>
 					
 					<Row className="dropdown-multi">
 						<Col md={6} className="dropdown-link"> 
@@ -188,13 +188,13 @@ const LoggedInView=props =>{
 					<NavItem>
 						<Link to={`/@${props.currentUser.username}`} className="link">
 							<img src={props.currentUser.image} className="user-pic"  />
-								{props.currentUser.username}
+								<strong>{props.currentUser.username}</strong>
 						</Link>
       				</NavItem>
 					
 					<NavItem>
 						<Link to='/settings' className="link">
-							Settings
+							<strong>Settings</strong>
 						</Link>
 					</NavItem>
 				</Nav>
