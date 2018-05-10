@@ -51,13 +51,7 @@ const LoggedOutView=props=>{
     				<Navbar.Toggle />
   				</Navbar.Header>
   				<Navbar.Collapse>
-    			<Nav>
-					<NavItem eventKey={1}>
-						<Link to='/short-stories'>
-        					Short Stories
-						</Link>
-					</NavItem>
-    			</Nav>
+    			
     			<Nav pullRight>
 					<NavItem eventKey={1} >
 						<Link to='/signup'>

@@ -12,6 +12,7 @@ var UserSchema = new mongoose.Schema({
   favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Article' }],
   following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
   followers:  [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+  isAgent:{type:Boolean, default: false},
   hash: String,
   salt: String
 }, {timestamps: true});

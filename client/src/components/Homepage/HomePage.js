@@ -134,7 +134,7 @@ class HomePage extends React.Component{
 								<h5>Media Heading </h5>
 								<h6> by Joe Root </h6>
 								
-								<p>	Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisqu
+								<p>Last Update:	Agents page updated
 								</p>
 								</Media.Body>
 							</Media>
