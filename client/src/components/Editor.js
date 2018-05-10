@@ -140,17 +140,24 @@ class Editor extends React.Component {
                     </textarea>
                   </fieldset>*/}
                   
-                   <fieldset className="form-group">
-                    <input
-                      className="form-control form-control-lg"
-                      type = "text"
-                      placeholder="Mention the genre"
-                      value={this.props.genre}
-                      onChange={this.changeGenre}/>
-                    
-                  </fieldset>
+                  <select class="form-control"  placeholder="select genre" onChange={this.changeGenre}>
+                  <option value="" selected disabled>Choose genre</option>
+					<option value ="adventure">Adventure</option>
+					<option value="comedy">Comedy</option>
+					<option value="drama">Drama</option>
+					<option value="fantasy">Fantasy</option>
+					<option value="horror">Horror</option>
+					<option value="mystery">Mystery</option>
+					<option value="mythology">Mythology</option>
+					<option value="plays">Play</option>
+					<option value="poetry">Poetry</option>
+					<option value="romance">Romance</option>
+					<option value="satire">Satire</option>
+					<option value="screenplay">Screenplay</option>
+					<option value="tragedy">Tragedy</option>
+				</select>
 
-
+				<br/>
                   <fieldset className="form-group">
                     <input
                       className="form-control"
@@ -158,7 +165,9 @@ class Editor extends React.Component {
                       placeholder="Enter tags"
                       value={this.props.tagInput}
                       onChange={this.changeTagInput}
-                      onKeyUp={this.watchForEnter} />
+                      onKeyUp={this.watchForEnter} 
+                      
+                      />
 
                     <div className="tag-list">
                       {

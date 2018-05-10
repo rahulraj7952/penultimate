@@ -91,7 +91,7 @@ class HomePage extends React.Component{
 								</Col>
 								</Media.Body>
 									<Media.Right>
-									<img width={200} height={300} src="https://images-na.ssl-images-amazon.com/images/I/81hZPqv7zvL.jpg" alt="thumbnail" />
+									<img width={200} height={300} src="https://99designs-blog.imgix.net/wp-content/uploads/2017/12/attachment_83090027.jpg?auto=format&q=60&fit=max&w=930" alt="thumbnail" />
 								</Media.Right>
 							</Media>
 							<hr/>
@@ -122,7 +122,7 @@ class HomePage extends React.Component{
 								</p>
 								</Media.Body>
 								<Media.Right>
-									<img width={100} height={150} src="https://99designs-blog.imgix.net/wp-content/uploads/2017/01/enceladus.jpg?auto=format&q=60&fit=max&w=930" alt="thumbnail" />
+									<img width={100} height={150} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR4wFJXpH6kQTt6gWGzhWF8TBqupVo7ZER6xaWrSaQaMRD5msMig" alt="thumbnail" />
 								</Media.Right>
 							</Media>
 						</Col>

@@ -21,6 +21,7 @@ import Settings from './Settings';
 import Listing from './Listing';
 import DraftEditor from './DraftEditor';
 import agent from '../agent';
+import MyWorks from './MyWorks'
 import { connect } from 'react-redux';
 import { APP_LOAD, REDIRECT, NEW_NOTIFICATION } from '../constants/actionTypes';
 import { store } from '../store';
@@ -50,16 +51,11 @@ class App extends React.Component{
         super();
          this.state = {
           posts : []
-        }
-         
-			
+        }	
 		this.pusher = new Pusher("5e2ba289c6b150773bd4", {
          cluster: 'ap2',
          encrypted: true
-        });
-         
-	 
-        
+        });    
 	}
 	
 	componentWillReceiveProps(nextProps) {
@@ -130,6 +126,7 @@ return(
 		<Route path= "/login" component={Login}/>
 		<Route path="/signup" component={Register}/>
 		<Route path="/settings" component={Settings}/>
+		<Route path="/myworks" component={MyWorks} />
 		<Route path="/editor" component={DraftEditor}/>
 		<Route exact path="/" component={HomePage}/>
 		</Switch>
