@@ -79,8 +79,9 @@ class App extends React.Component{
 			console.log("print", this.props.currentUser.id)
 			channel= this.pusher.subscribe("my-channel-"+this.props.currentUser.id);
 				channel.bind('post', data => {
+					console.log("data",data.message);
 				this.setState({ posts: this.state.posts.concat(data)});
-				console.log(data);
+				
 	},this);
   } 
   
@@ -96,7 +97,7 @@ render(){
 	
 	console.log("posts", this.state.posts)
 	if (this.props.appLoaded) {
-		//Pusher.logToConsole = true;
+		Pusher.logToConsole = true;
 	  console.log(this.props.appName);
 			if(this.props.currentUser){
 				

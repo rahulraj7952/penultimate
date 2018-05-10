@@ -32,6 +32,7 @@ exports.create = function(req, res) {
   encrypted: true
 });
 		user.followers.forEach(function(id){	
+			console.log(user.username," posted an article" ,id);
 			pusher.trigger("my-channel-"+id, 'post', {
   "message": user.username +" posted an article",
   "slug": note.slug
