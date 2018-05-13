@@ -34,7 +34,7 @@ class MyWorks extends React.Component{
 
 	
 	render(){
-	const myBooks=this.props.books?this.props.books.books.map(book=><Book book={book} key={book.id}/>):"Loading"
+	const myBooks=this.props.books?this.props.books.books.map(book=><Book book={book} key={book.id}/>):"Checking for previous works..."
 	return(<Grid>
 				<Row>
 					<Col mdOffset={2}>

@@ -100,7 +100,7 @@ class Editor extends React.Component {
 						<input
                       className="form-control"
                       type="text"
-                      placeholder="Article Title"
+                      placeholder="Book Name"
                       value={this.props.bookTitle}
                       onChange={this.changeBookTitle} />
                   </fieldset>
@@ -109,7 +109,7 @@ class Editor extends React.Component {
                     <input
                       className="form-control"
                       type="text"
-                      placeholder="What's this article about?"
+                      placeholder="A brief description of the book"
                       value={this.props.description}
                       onChange={this.changeDescription} />
                   </fieldset>

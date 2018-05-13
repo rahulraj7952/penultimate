@@ -42,7 +42,7 @@ class MyBook extends React.Component{
 	return(<Grid>
 				<Row>
 					<Col mdOffset={2}>
-						<h3>Book 3</h3>
+						<h3>{this.props.currentBook.title}</h3>
 					</Col>
 				</Row>
 				<Row>
