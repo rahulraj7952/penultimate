@@ -8,6 +8,8 @@ import home from './reducers/home';
 import profile from './reducers/profile';
 import settings from './reducers/settings';
 import listpage from './reducers/listpage';
+import book from './reducers/book';
+import bookList from './reducers/bookList';
 import { routerReducer } from 'react-router-redux';
 
 export default combineReducers({
@@ -20,5 +22,7 @@ export default combineReducers({
   listpage,
   profile,
   settings,
+  book,
+  bookList,
   router: routerReducer
 });

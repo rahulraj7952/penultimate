@@ -3,6 +3,7 @@ import {
   REDIRECT,
   LOGOUT,
   ARTICLE_SUBMITTED,
+  BOOK_SUBMITTED,
   SETTINGS_SAVED,
   LOGIN,
   REGISTER,
@@ -41,6 +42,9 @@ export default (state = defaultState, action) => {
     case ARTICLE_SUBMITTED:
       const redirectUrl = `/`;
       return { ...state, redirectTo: redirectUrl };
+    case BOOK_SUBMITTED:
+		
+      return { ...state, redirectTo: `/write/newChapter` };
     case SETTINGS_SAVED:
       return {
         ...state,

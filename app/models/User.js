@@ -56,8 +56,6 @@ UserSchema.methods.toAuthJSON = function(){
 
 UserSchema.methods.toProfileJSONFor = function(user){
 	
-	console.log(this.username, this.bio, user.isFollowing(this._id))
-	
   return {
     username: this.username,
     bio: this.bio,

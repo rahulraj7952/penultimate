@@ -28,7 +28,6 @@ class Article extends React.Component {
   componentWillMount() {
 	
     this.props.onLoad(agent.Articles.get(this.props.match.params.id));
-      //console.log("hahad", this.props.match.params.id)
   }
 
   componentWillUnmount() {

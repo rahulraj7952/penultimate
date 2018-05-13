@@ -68,6 +68,7 @@ class Editor extends React.Component {
         //author:this.props.currentUser.username, 
         imageurl: "http://via.placeholder.com/300x200"
       };
+      
 		console.log(article);
       const slug = { slug: this.props.articleSlug };
        const promise = this.props.articleSlug ?

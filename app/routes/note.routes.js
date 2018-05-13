@@ -6,7 +6,7 @@ module.exports = function(app) {
     var books = require('../controllers/book.controller.js');
 
     // Create a new Note
-    app.post('/articles', auth.required, notes.create);
+    app.post('/articles/:bookId', auth.required, notes.create);
 
     // Retrieve all Notes
     app.get('/articles', auth.optional, notes.findAll);

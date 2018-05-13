@@ -95,7 +95,7 @@ const LoggedInView=props =>{
   				<Navbar.Collapse>
     			<Nav>
 					<NavItem>
-						<Link to='/write'className="link">
+						<Link to='/myworks'className="link">
 							<strong>Write</strong>
 						</Link>
 					</NavItem>
@@ -117,7 +117,7 @@ const LoggedInView=props =>{
 					<Row className="dropdown-multi">
 						<Col md={6} className="dropdown-link"> 
 							<MenuItem className="dropdown-link">
-								<Link to='/short-stories' className="link">	Short Stories</Link>
+								<Link to='/genre/thriller' className="link">	Short Stories</Link>
 							</MenuItem>
 							<MenuItem className="dropdown-link" className="link">	
 								<Link to='/genre/adventure' className="link">Adventure</Link>
@@ -144,7 +144,7 @@ const LoggedInView=props =>{
 								<Link to='/genre/tragedy' className="link">	Tragedy</Link>
 							</MenuItem>
 							<MenuItem >
-								<Link to='/genre/Fantasy' className="link">	Fantasy</Link>
+								<Link to='/genre/fantasy' className="link">	Fantasy</Link>
 							</MenuItem>
 							<MenuItem >
 								<Link to='/genre/mythology' className="link">	Mythology</Link>

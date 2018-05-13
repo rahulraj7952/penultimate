@@ -59,7 +59,7 @@ const FollowUserButton = props => {
 };
 
 const mapStateToProps = state => ({
-  ...state.articleList,
+  ...state.bookList,
   currentUser: state.common.currentUser,
   profile: state.profile
 });
@@ -97,7 +97,7 @@ class Profile extends React.Component {
 	  console.log(this.props.match.params);
     this.props.onLoad(Promise.all([
       agent.Profile.get(this.props.match.params.username),
-      agent.Articles.byAuthor(this.props.match.params.username)
+      agent.Books.byAuthor(this.props.match.params.username)
     ]));
   }
 
@@ -120,7 +120,7 @@ class Profile extends React.Component {
 
     const isUser = this.props.currentUser &&
       this.props.profile.username === this.props.currentUser.username;
-if(this.props.articles){
+if(this.props.books){
     return (
       <div className="profile-page">
 
@@ -149,7 +149,7 @@ if(this.props.articles){
 						<h4>Stories by {profile.username}</h4>
 					</div>
 				<Col md={9} mdOffset={1}>
-					{ this.props.articles.map(article => <div><ListComponent article={article} key={article.slug}/></div>)}
+					{ this.props.books.map(book => <div><ListComponent book={book} key={book.slug}/></div>)}
 				</Col>
 				
 				</Col>

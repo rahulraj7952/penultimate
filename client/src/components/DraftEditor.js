@@ -99,9 +99,9 @@ const plugins = [inlineToolbarPlugin];
 const text = 'In this editor a toolbar shows up once you select part of the text …';
 
 class CustomInlineToolbarEditor extends Component {
-
+	
   state = {
-    editorState: createEditorStateWithText(text),
+    editorState: createEditorStateWithText(this.props.text),
   };
 
   onChange = (editorState) => {

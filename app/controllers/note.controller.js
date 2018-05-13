@@ -2,8 +2,11 @@ var Note = require('../models/note.model.js');
 var Draft = require('../models/draft.model.js');
 var User = require('../models/User.js');
 var Pusher = require('pusher');
+var Book= require('../models/book.model.js');
 
 exports.create = function(req, res) {
+	
+	
 	
 	if(!req.body.article.content) {
         return res.status(400).send({message: "Note can not be empty"});
@@ -11,7 +14,6 @@ exports.create = function(req, res) {
 	
     var note = new Note(req.body.article);
 	
-	console.log(req.body.article);
 	User.findById(req.payload.id).then(function(user){
     if (!user) { console.log("no user");
 		return res.sendStatus(401); }
@@ -39,6 +41,19 @@ exports.create = function(req, res) {
   
 });
 })
+
+console.log("bookId", req.params.bookId)
+ Book.findOne({ slug: req.params.bookId})
+    .then(function (book) {
+      if (!book) { 
+		  console.log("in error");
+		  return res.sendStatus(404); }
+      book.chapters.push(note.id);
+      console.log(book);
+      book.save();
+
+     return res.send(book);
+    })
 
 res.status(200).json(note);
 
@@ -151,6 +166,8 @@ exports.findOne = function(req, res, next) {
 };
 
 exports.update = function(req, res) {
+	
+	console.log("in update", req.body)
     // Update a note identified by the noteId in the request
 	Note.findById(req.params.noteId, function(err, note) {
         if(err) {
@@ -165,10 +182,9 @@ exports.update = function(req, res) {
             return res.status(404).send({message: "Note not found with id " + req.params.noteId});            
         }
 
-        note.title = req.body.title;
-        note.content = req.body.content;
-        note.author=req.body.author; 
-        note.imageurl=req.body.imageurl;
+        note.title = req.body.article.title;
+        note.contentState = req.body.article.contentState;
+        note.content=req.body.article.content;
 
         note.save(function(err, data){
             if(err) {

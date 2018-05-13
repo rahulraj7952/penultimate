@@ -8,20 +8,23 @@ import {
 import {Grid, Col} from 'react-bootstrap';
 import Dashboard from './Dashboard/dashboard';
 import HomePage from './Homepage/HomePage';
-import ShortStories from './ShortStories';
-import MyEditor from './Editor';
+import MyEditor2 from './Editor';
+import MyEditor from './Editor2';
 import Article from './Article';
 import Book from './Dashboard/Book';
+import BookView from './BookView';
 import Profile from './Profile';
 import Login from './Login';
 import Listpage from './Listpage';
 import Header from './Header';
 import Register from './Register';
+import EditorForChapter from './EditorForChapter'
 import Settings from './Settings';
 import Listing from './Listing';
 import DraftEditor from './DraftEditor';
 import agent from '../agent';
-import MyWorks from './MyWorks'
+import MyWorks from './MyWorks';
+import MyBook from './MyBook';
 import { connect } from 'react-redux';
 import { APP_LOAD, REDIRECT, NEW_NOTIFICATION } from '../constants/actionTypes';
 import { store } from '../store';
@@ -98,17 +101,6 @@ render(){
 	console.log("posts", this.state.posts)
 	if (this.props.appLoaded) {
 		Pusher.logToConsole = true;
-	  console.log(this.props.appName);
-			if(this.props.currentUser){
-				
-				
-				
-
-	
-}
-	
-		
-		
 return(	
 		
 	
@@ -116,17 +108,19 @@ return(
 	    <div>
 	    <Header currentUser={this.props.currentUser} notifications={this.state.posts}/>
 	    <Switch>
-    	<Route path ="/short-stories" component = {ShortStories}/>
+    	<Route path ="/write2" component={MyEditor2}/>
+    	<Route path ="/write/:chapter" component={EditorForChapter}/>
     	<Route path ="/write" component={MyEditor}/>
 		<Route path="/dashboard" component={Dashboard}/>
-		<Route path="/book" component={Book}/>
 		<Route path="/article/:id" component={Article} />
+		<Route path="/book/:id" component={BookView}/>
 		<Route path="/genre/:id" component={Listpage} />
 		<Route path="/listing/:id" component={Listing}/>
 		<Route path="/@:username" component={Profile} />
 		<Route path= "/login" component={Login}/>
 		<Route path="/signup" component={Register}/>
 		<Route path="/settings" component={Settings}/>
+		<Route path="/myworks/:book" component={MyBook}/>
 		<Route path="/myworks" component={MyWorks} />
 		<Route path="/editor" component={DraftEditor}/>
 		<Route exact path="/" component={HomePage}/>

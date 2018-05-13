@@ -16,7 +16,7 @@ const tokenPlugin = req => {
     req.set('authorization', `Token ${token}`);
   }
 }
-
+let bookId=null;
 const requests = {
   del: url =>
     superagent.del(`${API_ROOT}${url}`).use(tokenPlugin).then(responseBody),
@@ -46,6 +46,32 @@ const Tags = {
 
 const limit = (count, p) => `limit=${count}&offset=${p ? p * count : 0}`;
 const omitSlug = article => Object.assign({}, article, { slug: undefined })
+const Books ={
+	all: page =>
+    requests.get(`/books?${limit(10, page)}`),
+  byAuthor: (author, page) =>
+    requests.get(`/books?author=${encode(author)}&${limit(5, page)}`),
+  byTag: (tag, page) =>
+    requests.get(`/books?tag=${encode(tag)}&${limit(10, page)}`),
+  byGenre: (genre, page) =>
+	requests.get(`/books?genre=${encode(genre)}&${limit(10, page)}`),
+  del: slug =>
+    requests.del(`/books/${slug}`),
+  favorite: slug =>
+    requests.post(`/books/${slug}/favorite`),
+  favoritedBy: (author, page) =>
+    requests.get(`/books?favorited=${encode(author)}&${limit(5, page)}`),
+  feed: () =>
+    requests.get('/books/feed?limit=10&offset=0'),
+  get: slug =>
+    requests.get(`/books/${slug}`),
+  unfavorite: slug =>
+    requests.del(`/books/${slug}/favorite`),
+  update: book =>
+    requests.put(`/books/${book.slug}`, { book: omitSlug(book) }),
+  create: book =>{
+    requests.post(`/books`, {book})}
+	}
 const Articles = {
   all: page =>
     requests.get(`/articles?${limit(10, page)}`),
@@ -67,10 +93,10 @@ const Articles = {
     requests.get(`/articles/${slug}`),
   unfavorite: slug =>
     requests.del(`/articles/${slug}/favorite`),
-  update: article =>
-    requests.put(`/articles/${article.slug}`, { article: omitSlug(article) }),
-  create: article =>{
-    requests.post('/articles', { article})}
+  update: (article,id) =>
+    requests.put(`/articles/${id}`, { article: omitSlug(article) }),
+  create: (article,slug)=>{
+    requests.post(`/articles/${slug}`, { article})}
 };
 
 const Comments = {
@@ -94,6 +120,7 @@ const Profile = {
 export default {
   Articles,
   Auth,
+  Books,
   Comments,
   Profile,
   Tags,

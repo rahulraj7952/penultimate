@@ -4,11 +4,13 @@ import {
   LOGIN_PAGE_UNLOADED,
   REGISTER_PAGE_UNLOADED,
   ASYNC_START,
-  UPDATE_FIELD_AUTH
+  UPDATE_FIELD_AUTH,
+  BOOK_SUBMITTED
 } from '../constants/actionTypes';
 
 export default (state = {}, action) => {
   switch (action.type) {
+	case BOOK_SUBMITTED:
     case LOGIN:
     case REGISTER:
       return {
@@ -20,7 +22,7 @@ export default (state = {}, action) => {
     case REGISTER_PAGE_UNLOADED:
       return {};
     case ASYNC_START:
-      if (action.subtype === LOGIN || action.subtype === REGISTER) {
+      if (action.subtype === LOGIN || action.subtype === REGISTER ||action.subtype ===BOOK_SUBMITTED) {
         return { ...state, inProgress: true };
       }
       break;

@@ -3,13 +3,20 @@ import {
   EDITOR_PAGE_UNLOADED,
   ARTICLE_SUBMITTED,
   ASYNC_START,
+  BOOK_SUBMITTED,
   ADD_TAG,
   REMOVE_TAG,
   UPDATE_FIELD_EDITOR,
-  UPDATE_MAIN_EDITOR
+  UPDATE_MAIN_EDITOR,
+  SET_CHAPTER
 } from '../constants/actionTypes';
 
-export default (state = {}, action) => {
+const defaultState={
+	text:"Write your content here",
+	title:"Untitled"
+	}
+
+export default (state = defaultState, action) => {
   switch (action.type) {
     case EDITOR_PAGE_LOADED:
       return {
@@ -22,15 +29,26 @@ export default (state = {}, action) => {
         tagList: action.payload ? action.payload.article.tagList : []
       };
     case EDITOR_PAGE_UNLOADED:
-      return {};
+      return {...defaultState};
     case ARTICLE_SUBMITTED:
+      return {
+        ...defaultState,
+        inProgress: null,
+        errors: action.error ? action.payload.errors : null
+      };
+    case ASYNC_START:
+      if (action.subtype === ARTICLE_SUBMITTED) {
+        return { ...state, inProgress: true };
+      }
+      break;
+    case BOOK_SUBMITTED:
       return {
         ...state,
         inProgress: null,
         errors: action.error ? action.payload.errors : null
       };
     case ASYNC_START:
-      if (action.subtype === ARTICLE_SUBMITTED) {
+      if (action.subtype === BOOK_SUBMITTED) {
         return { ...state, inProgress: true };
       }
       break;
@@ -52,6 +70,13 @@ export default (state = {}, action) => {
 			...state,
 			html:action.html,
 			text:action.text
+			};
+	case SET_CHAPTER:
+		return{
+			id:action.chapter._id,
+			articleSlug:action.chapter.slug,
+			text:action.chapter?action.chapter.content:"Write your content here...",
+			title: action.chapter?action.chapter.title:"..."
 			}
     default:
       return state;

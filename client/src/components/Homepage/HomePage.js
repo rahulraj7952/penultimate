@@ -37,19 +37,19 @@ class HomePage extends React.Component{
  componentWillMount() {
 	 console.log(this.props.currentUser)
   this.props.onLoad(Promise.all([
-      agent.Articles.byGenre("horror"),
-      agent.Articles.byAuthor("person1")
+      agent.Books.byGenre("horror"),
+      agent.Books.byAuthor("rahulraj")
     ]));
   }
 
 
 	render(){
 		
-			const homePagePosts=this.props.homePagePosts.articles?this.props.homePagePosts.articles.map(note => <div><HomePageCard note={note} key={note.slug}/></div>):"loading bro"
+			const homePagePosts=this.props.homePageBooks.books?this.props.homePageBooks.books.map(book => <div><HomePageCard book={book} key={book.slug}/></div>):"loading bro"
 			
-			const genre1=this.props.genre1?<span><MultipleItemCarousel title={"Recommended"} title= "Recommended" articles={this.props.genre1.articles}/>
-						<MultipleItemCarousel title={"Horror"} title = "Horror" articles={this.props.genre1.articles}/>
-						<MultipleItemCarousel title={"Adventure"} title ="Adventure" articles={this.props.genre1.articles}/></span>:"Loading bro"
+			const genre1=this.props.genre1?<span><MultipleItemCarousel title={"Recommended"} title= "Recommended" books={this.props.genre1.books}/>
+						<MultipleItemCarousel title={"Horror"} title = "Horror" books={this.props.genre1.books}/>
+						<MultipleItemCarousel title={"Adventure"} title ="Adventure" books={this.props.genre1.books}/></span>:"Loading bro"
 						
 			 
 		return(

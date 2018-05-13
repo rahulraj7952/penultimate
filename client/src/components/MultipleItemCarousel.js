@@ -22,7 +22,7 @@ export default class MultipleItemsCarousel extends Component {
    <div >
 	<h3 className="homepage-subheading">{this.props.title}</h3>
      <span className="carousel"><Slider {...settings}>
-         { this.props.articles.map(article => <div><ListComponent article={article} key={article.slug}/></div>)}
+         { this.props.books.map(book => <div><ListComponent book={book} key={book.slug}/></div>)}
       </Slider></span>
 	</div>
       

@@ -93,6 +93,7 @@ app.get('/', function(req, res){
 });*/
 require('./app/routes/user.routes.js')(app);
 require('./app/routes/note.routes.js')(app);
+require('./app/routes/book.routes.js')(app);
 require('./config/passport');
 
 

@@ -17,16 +17,16 @@ class ListComponent extends React.Component {
 								<Media.Body>
 								
 								<Media.Heading>
-									<Link to={`/article/${this.props.article.slug}`} className="list-link">
-									<h4>{this.props.article.title}</h4>
+									<Link to={`/book/${this.props.book.slug}`} className="list-link">
+									<h4>{this.props.book.title}</h4>
 									</Link>
 								</Media.Heading>
 								
-								<h5><Icon size={14} icon={pen}/> <Link to={`/@${this.props.article.author.username}`} className="list-link">{this.props.article.author.username}</Link></h5>
+								<h5><Icon size={14} icon={pen}/> <Link to={`/`} className="list-link">{this.props.book.author.username}</Link></h5>
 								<h6><Icon size={14} icon={eye}/> 3.4k <Icon size={14} icon={starEmpty}/> 4.6 </h6>
 								<br/>
 								
-								<p>	{this.props.article.content.substring(1,120)}
+								<p>	book description should go here 
 								</p>
 								</Media.Body>
 									<Media.Right>
