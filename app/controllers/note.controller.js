@@ -40,7 +40,7 @@ exports.create = function(req, res) {
   "from": {"username":user.username},
   "verb": "posted a chapter",
   "createdAt":Date.now(),
-  "link":note.slug
+  "link":req.params.bookId
   
 });
 })

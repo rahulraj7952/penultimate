@@ -37,7 +37,7 @@ export default (state = defaultState, action) => {
         token: action.token || null,
         appLoaded: true,
         currentUser: action.payload ? action.payload[0].user : null,
-        notifications:action.payload?state.notifications.concat(action.payload[1].notifications):null
+        //notifications:action.payload?state.notifications.concat(action.payload[1].notifications):null
       };
      case SET_NOTIFICATION_COUNT:
 	  return {
@@ -47,7 +47,7 @@ export default (state = defaultState, action) => {
     case REDIRECT:
       return { ...state, redirectTo: null };
     case LOGOUT:
-      return { ...state, redirectTo: '/', token: null, currentUser: null };
+      return { ...state, redirectTo: '/', notifications:[], token: null, currentUser: null };
     case ARTICLE_SUBMITTED:
       const redirectUrl = `/`;
       return { ...state, redirectTo: redirectUrl };
@@ -80,11 +80,12 @@ export default (state = defaultState, action) => {
     case REGISTER_PAGE_UNLOADED:
       return { ...state, viewChangeCounter: state.viewChangeCounter + 1 };
     case NEW_NOTIFICATION:
+    
 		return {
 			...state, 
 			
-			notifications:action.data?state.notifications.concat(action.data):null,
-			notificationCount:state.notificationCount+1
+			notifications:action.data?state.notifications.concat(action.data):state.notifications.concat(action.payload.notifications),
+			notificationCount:action.data?state.notificationCount+1:state.notificationCount
 	}
 	
     default:

@@ -19,7 +19,7 @@ import moment from 'moment';
 
 const mapStateToProps = state => {
   return {
-    
+    notifications:state.common.notifications,
     notificationCount:state.common.notificationCount
   }};								
 
@@ -35,7 +35,6 @@ const Notification=props =>{
 	var notificationMessage=props.notification.from.username+" "+props.notification.verb;
 	
 	var time=moment(props.notification.createdAt).fromNow();
-	console.log("time",time)
 	return(
 	<MenuItem className="notification-card">
 								<div>
@@ -44,7 +43,7 @@ const Notification=props =>{
 											<Image width={48} height={48} src="http://www.fiat500owners.com/forum/attachment.php?attachmentid=4220&d=1461347917" alt="thumbnail" circle/>
 										</Media.Left>
 										<Media.Body>
-											<Link to={`/article/${props.notification.slug}`}>
+											<Link to={`book/${props.notification.link}`}>
 												<p><b>{notificationMessage}</b></p>
 												<p><i>{time}</i></p>
 											</Link>
@@ -241,6 +240,11 @@ class Header extends React.Component{
     
 	render(){
 		console.log("header", this.props.notifications)
+		var count =0;
+	this.props.notifications.forEach(notification=>{if(notification.readState==false){
+		console.log("increasing count");
+		count++;}})
+	if(count>0){this.props.onSetNotificationCount(count)}
 		return(
 		 <nav className="navbar navbar-light">
           <Link to="/" className="navbar-brand"></Link>

@@ -8,7 +8,8 @@ import agent from '../../agent';
 import {
   HOME_PAGE_LOADED,
   HOME_PAGE_UNLOADED,
-  NEW_NOTIFICATION
+  NEW_NOTIFICATION,
+  SET_NOTIFICATION_COUNT
 } from '../../constants/actionTypes';
 import Icon from 'react-icons-kit';
 import { pen } from 'react-icons-kit/icomoon/pen';
@@ -27,8 +28,10 @@ const mapDispatchToProps = dispatch => ({
     dispatch({ type: HOME_PAGE_LOADED, payload })},
   onUnload: () =>
     dispatch({  type: HOME_PAGE_UNLOADED }),
-  onNewNotification:(payload)=>
-	dispatch({type: NEW_NOTIFICATION, payload})  
+  onNotification:(payload)=>
+	dispatch({type: NEW_NOTIFICATION, payload}),
+  onSetNotificationCount:(count)=>
+	dispatch({type: SET_NOTIFICATION_COUNT, count})
 });
 
 
@@ -40,6 +43,16 @@ class HomePage extends React.Component{
 
 	const request=Promise.all([agent.Books.byGenre("horror"),agent.Books.byAuthor("rahulraj")])
   this.props.onLoad(request);
+  if (this.props.token){
+	  if(this.props.notifications.length==0){
+		  
+		  
+  this.props.onNotification(agent.Notifications.get());
+  
+		
+  
+}
+  }
   
   }
 

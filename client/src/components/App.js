@@ -43,9 +43,7 @@ const mapDispatchToProps = dispatch => ({
   onRedirect: () =>
     dispatch({ type: REDIRECT }),
   onNewNotification:(data)=>
-	dispatch({type: NEW_NOTIFICATION, data}),
-  onSetNotificationCount:(count)=>
-	dispatch({type: SET_NOTIFICATION_COUNT, count})
+	dispatch({type: NEW_NOTIFICATION, data})
 
 });
 
@@ -84,11 +82,7 @@ class App extends React.Component{
 	const res=token?( await Promise.all([agent.Auth.current(), agent.Notifications.get()])):null
      this.props.onLoad(res, token);
     
-    console.log("in willmount", this.props.notifications)
-    var count =0;
-	this.props.notifications.forEach(notification=>{if(notification.readState==false){count++;}})
-	if(count>0){this.props.onSetNotificationCount(count)}
-     var channel;
+         var channel;
 	  
 			console.log("print", this.props.currentUser.id)
 			channel= this.pusher.subscribe("my-channel-"+this.props.currentUser.id);
