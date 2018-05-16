@@ -1,17 +1,14 @@
 import React, {Component} from "react";
 import {
   Route,
-  Link,
   Switch
 } from "react-router-dom";
 
-import {Grid, Col} from 'react-bootstrap';
 import Dashboard from './Dashboard/dashboard';
 import HomePage from './Homepage/HomePage';
 import MyEditor2 from './Editor';
 import MyEditor from './Editor2';
 import Article from './Article';
-import Book from './Dashboard/Book';
 import BookView from './BookView';
 import Profile from './Profile';
 import Login from './Login';
@@ -26,7 +23,7 @@ import agent from '../agent';
 import MyWorks from './MyWorks';
 import MyBook from './MyBook';
 import { connect } from 'react-redux';
-import { APP_LOAD, REDIRECT, NEW_NOTIFICATION } from '../constants/actionTypes';
+import { APP_LOAD, REDIRECT, NEW_NOTIFICATION, SET_NOTIFICATION_COUNT } from '../constants/actionTypes';
 import { store } from '../store';
 import { push } from 'react-router-redux';
 import Pusher from 'pusher-js';
@@ -36,7 +33,8 @@ const mapStateToProps = state => {
     appLoaded: state.common.appLoaded,
     appName: state.common.appName,
     currentUser: state.common.currentUser,
-    redirectTo: state.common.redirectTo
+    redirectTo: state.common.redirectTo,
+    notifications:state.common.notifications
   }};								
 
 const mapDispatchToProps = dispatch => ({
@@ -44,61 +42,70 @@ const mapDispatchToProps = dispatch => ({
     dispatch({ type: APP_LOAD, payload, token, skipTracking: true }),
   onRedirect: () =>
     dispatch({ type: REDIRECT }),
-  
   onNewNotification:(data)=>
-	dispatch({type: NEW_NOTIFICATION, data})
+	dispatch({type: NEW_NOTIFICATION, data}),
+  onSetNotificationCount:(count)=>
+	dispatch({type: SET_NOTIFICATION_COUNT, count})
+
 });
 
 class App extends React.Component{
 	 constructor(){
         super();
-         this.state = {
-          posts : []
-        }	
-		this.pusher = new Pusher("5e2ba289c6b150773bd4", {
+ 		this.pusher = new Pusher("5e2ba289c6b150773bd4", {
          cluster: 'ap2',
          encrypted: true
         });    
 	}
 	
+	
+	
+	
+	
 	componentWillReceiveProps(nextProps) {
-   if (nextProps.redirectTo) {
+   if (nextProps.redirectTo) { 
       //this.context.router.replace(nextProps.redirectTo);
      store.dispatch(push(nextProps.redirectTo));
      this.props.onRedirect();
    }
   }
+  
+  
+  
+  
+  
    async componentWillMount() {
 	   
     const token = window.localStorage.getItem('jwt');
     if (token) {
       agent.setToken(token);
     }
-	const res=token? await agent.Auth.current():null
+    console.log("token", token)
+	const res=token?( await Promise.all([agent.Auth.current(), agent.Notifications.get()])):null
      this.props.onLoad(res, token);
-    console.log("in willmount")
+    
+    console.log("in willmount", this.props.notifications)
+    var count =0;
+	this.props.notifications.forEach(notification=>{if(notification.readState==false){count++;}})
+	if(count>0){this.props.onSetNotificationCount(count)}
      var channel;
 	  
 			console.log("print", this.props.currentUser.id)
 			channel= this.pusher.subscribe("my-channel-"+this.props.currentUser.id);
 				channel.bind('post', data => {
-					console.log("data",data.message);
-				this.setState({ posts: this.state.posts.concat(data)});
+					console.log("data",data.link);
+				this.props.onNewNotification(data);
 				
 	},this);
   } 
   
+
   
   
- componentDidMount(){
-	 
-	 
-	 
-	  }
+ 
 	
 render(){
 	
-	console.log("posts", this.state.posts)
 	if (this.props.appLoaded) {
 		Pusher.logToConsole = true;
 return(	
@@ -106,7 +113,7 @@ return(
 	
 		
 	    <div>
-	    <Header currentUser={this.props.currentUser} notifications={this.state.posts}/>
+	    <Header currentUser={this.props.currentUser} notifications={this.props.notifications}/>
 	    <Switch>
     	<Route path ="/write2" component={MyEditor2}/>
     	<Route path ="/write/:chapter" component={EditorForChapter}/>

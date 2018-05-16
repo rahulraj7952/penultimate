@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import {withRouter} from 'react-router-dom'
-import {Carousel, Row, Col, Grid, Media} from 'react-bootstrap';
-import axios from 'axios';
+import { Row, Col, Grid, Media} from 'react-bootstrap';
 import HomePageCard from './HomePageCard';
 import './HomePageStyle.css';
 import {connect} from 'react-redux';
@@ -10,6 +8,7 @@ import agent from '../../agent';
 import {
   HOME_PAGE_LOADED,
   HOME_PAGE_UNLOADED,
+  NEW_NOTIFICATION
 } from '../../constants/actionTypes';
 import Icon from 'react-icons-kit';
 import { pen } from 'react-icons-kit/icomoon/pen';
@@ -27,19 +26,21 @@ const mapDispatchToProps = dispatch => ({
   onLoad: (payload) =>{
     dispatch({ type: HOME_PAGE_LOADED, payload })},
   onUnload: () =>
-    dispatch({  type: HOME_PAGE_UNLOADED })
+    dispatch({  type: HOME_PAGE_UNLOADED }),
+  onNewNotification:(payload)=>
+	dispatch({type: NEW_NOTIFICATION, payload})  
 });
 
 
 
 class HomePage extends React.Component{
 	
- componentWillMount() {
-	 console.log(this.props.currentUser)
-  this.props.onLoad(Promise.all([
-      agent.Books.byGenre("horror"),
-      agent.Books.byAuthor("rahulraj")
-    ]));
+ async componentWillMount() {
+	 console.log("homepage", this.props.token)
+
+	const request=Promise.all([agent.Books.byGenre("horror"),agent.Books.byAuthor("rahulraj")])
+  this.props.onLoad(request);
+  
   }
 
 
@@ -47,9 +48,9 @@ class HomePage extends React.Component{
 		
 			const homePagePosts=this.props.homePageBooks.books?this.props.homePageBooks.books.map(book => <div><HomePageCard book={book} key={book.slug}/></div>):"loading bro"
 			
-			const genre1=this.props.genre1?<span><MultipleItemCarousel title={"Recommended"} title= "Recommended" books={this.props.genre1.books}/>
-						<MultipleItemCarousel title={"Horror"} title = "Horror" books={this.props.genre1.books}/>
-						<MultipleItemCarousel title={"Adventure"} title ="Adventure" books={this.props.genre1.books}/></span>:"Loading bro"
+			const genre1=this.props.genre1?<span><MultipleItemCarousel title={"Recommended"} books={this.props.genre1.books}/>
+						<MultipleItemCarousel title={"Horror"} books={this.props.genre1.books}/>
+						<MultipleItemCarousel title={"Adventure"} books={this.props.genre1.books}/></span>:"Loading bro"
 						
 			 
 		return(
@@ -57,7 +58,7 @@ class HomePage extends React.Component{
 			{/*	<Grid>
 					<Col>
 						<div className="wrapper" >
-							<img  className="mainpage-picture" src="http://via.placeholder.com/1300x300"/>
+					a		<img  className="mainpage-picture" src="http://via.placeholder.com/1300x300"/>
 							<div className="description">
 								<p class='description_content'>Get Discovered</p>
 							</div>
@@ -116,7 +117,6 @@ class HomePage extends React.Component{
 								
 								<Media.Body>
 								<h4>Media Heading </h4>
-								<h6></h6>
 								
 								<p>	Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante 
 								</p>

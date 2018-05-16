@@ -94,6 +94,7 @@ app.get('/', function(req, res){
 require('./app/routes/user.routes.js')(app);
 require('./app/routes/note.routes.js')(app);
 require('./app/routes/book.routes.js')(app);
+require('./app/routes/notification.route.js')(app);
 require('./config/passport');
 
 

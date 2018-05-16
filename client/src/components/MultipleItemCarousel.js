@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import {Media, Col} from 'react-bootstrap';
 import Slider from "react-slick";
 import "./slick-carousel/slick/slick.css"; 
 import "./slick-carousel/slick/slick-theme.css";

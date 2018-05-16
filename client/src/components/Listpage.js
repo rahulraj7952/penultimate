@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import agent from '../agent';
-import {Carousel, Row, Col, Grid, Media} from 'react-bootstrap';
+import {Col, Grid} from 'react-bootstrap';
 import { connect } from 'react-redux';
 import {
   LIST_PAGE_LOADED,

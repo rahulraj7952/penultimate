@@ -1,14 +1,9 @@
 
 import React, { Component } from 'react';
-import {Grid, Row, Col, Panel,Image} from 'react-bootstrap';
-import Book from './Book';
+import {Row, Col, Panel,Image} from 'react-bootstrap';
 
 import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect,
-  withRouter
+  Link
 } from "react-router-dom";
 
 

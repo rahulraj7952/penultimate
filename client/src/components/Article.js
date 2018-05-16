@@ -1,7 +1,6 @@
 import React from 'react';
 import agent from '../agent';
 import { Link } from 'react-router-dom';
-import Google from 'react-icons/lib/fa/google'
 import { connect } from 'react-redux';
 import {Grid, Row, Col} from 'react-bootstrap';
 import { ARTICLE_PAGE_LOADED, ARTICLE_PAGE_UNLOADED } from '../constants/actionTypes';

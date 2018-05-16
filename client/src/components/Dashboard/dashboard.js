@@ -1,13 +1,5 @@
 import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect,
-  withRouter
-} from "react-router-dom";
-
-import {Grid, Row, Col, Panel,Image} from 'react-bootstrap';
+import {Grid, Row, Col} from 'react-bootstrap';
 import LatestBooksListing from './LatestBooksListing';
 import TopBooksListing from './TopBooksListing';
 import Submit from './Submit';

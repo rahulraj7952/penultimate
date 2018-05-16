@@ -9,7 +9,6 @@ import {
   EDITOR_PAGE_UNLOADED,
   UPDATE_FIELD_EDITOR
 } from '../constants/actionTypes';
-import {Link} from 'react-router-dom';
 import DraftEditor from './DraftEditor';
 
 const mapStateToProps = state => ({

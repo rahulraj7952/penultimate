@@ -16,14 +16,17 @@ import {
   SETTINGS_PAGE_UNLOADED,
   LOGIN_PAGE_UNLOADED,
   REGISTER_PAGE_UNLOADED, 
-  NEW_NOTIFICATION
+  NEW_NOTIFICATION,
+  SET_NOTIFICATION_COUNT,
+  MARK_NOTIFICATION_AS_READ
 } from '../constants/actionTypes';
 
 const defaultState = {
   appName: 'Conduit',
   token: null,
   viewChangeCounter: 0,
-  notifications:[]
+  notifications:[],
+  notificationCount:0
 };
 
 export default (state = defaultState, action) => {
@@ -33,8 +36,14 @@ export default (state = defaultState, action) => {
         ...state,
         token: action.token || null,
         appLoaded: true,
-        currentUser: action.payload ? action.payload.user : null
+        currentUser: action.payload ? action.payload[0].user : null,
+        notifications:action.payload?state.notifications.concat(action.payload[1].notifications):null
       };
+     case SET_NOTIFICATION_COUNT:
+	  return {
+		  ...state,
+		notificationCount:action.count
+	}
     case REDIRECT:
       return { ...state, redirectTo: null };
     case LOGOUT:
@@ -71,8 +80,13 @@ export default (state = defaultState, action) => {
     case REGISTER_PAGE_UNLOADED:
       return { ...state, viewChangeCounter: state.viewChangeCounter + 1 };
     case NEW_NOTIFICATION:
-		return {...state, notifications:state.notifications.concat(action.data)};
-
+		return {
+			...state, 
+			
+			notifications:action.data?state.notifications.concat(action.data):null,
+			notificationCount:state.notificationCount+1
+	}
+	
     default:
       return state;
   }

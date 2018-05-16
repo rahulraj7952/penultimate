@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {withRouter, Link} from 'react-router-dom'
-import {Carousel, Row, Col, Grid, Media} from 'react-bootstrap';	
+import {Link} from 'react-router-dom'
+import {Row,  Media} from 'react-bootstrap';	
 import Icon from 'react-icons-kit';
 import { pen } from 'react-icons-kit/icomoon/pen';
 import { eye} from 'react-icons-kit/icomoon/eye';

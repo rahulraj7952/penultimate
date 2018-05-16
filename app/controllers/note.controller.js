@@ -1,5 +1,6 @@
 var Note = require('../models/note.model.js');
 var Draft = require('../models/draft.model.js');
+var Notification = require('../models/notification.model.js');
 var User = require('../models/User.js');
 var Pusher = require('pusher');
 var Book= require('../models/book.model.js');
@@ -36,11 +37,25 @@ exports.create = function(req, res) {
 		user.followers.forEach(function(id){	
 			console.log(user.username," posted an article" ,id);
 			pusher.trigger("my-channel-"+id, 'post', {
-  "message": user.username +" posted an article",
-  "slug": note.slug
+  "from": {"username":user.username},
+  "verb": "posted a chapter",
+  "createdAt":Date.now(),
+  "link":note.slug
   
 });
 })
+
+
+
+
+var notification=new Notification();
+
+notification.to=user.followers;
+notification.from= user.id;
+notification.verb="posted a chapter";
+notification.link=note.slug;
+
+notification.save();
 
 console.log("bookId", req.params.bookId)
  Book.findOne({ slug: req.params.bookId})

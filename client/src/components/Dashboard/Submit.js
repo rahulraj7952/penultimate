@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Grid, Row, Col, Panel,Image} from 'react-bootstrap';
+import {Row} from 'react-bootstrap';
 import {FormGroup,ControlLabel, FormControl, HelpBlock, Button} from 'react-bootstrap';
 
 class Submit extends React.Component{
@@ -19,7 +19,7 @@ class Submit extends React.Component{
   }
 	enterPressed(event){
 		var code=event.keyCode || event.which;
-		if(code==13){
+		if(code===13){
 		this.handleSubmit(event);			
 		}	
 	}

@@ -108,6 +108,14 @@ const Comments = {
     requests.get(`/articles/${slug}/comments`)
 };
 
+const Notifications = {
+	get: () => 
+		requests.get(`/notifications`),
+	markRead:()=>
+		requests.put(`/notifications/markRead`)
+};
+	
+
 const Profile = {
   follow: username =>
     requests.post(`/profiles/${username}/follow`),
@@ -124,5 +132,6 @@ export default {
   Comments,
   Profile,
   Tags,
+  Notifications,
   setToken: _token => { token = _token; }
 };

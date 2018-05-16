@@ -4,22 +4,38 @@ import Nav from 'react-bootstrap/lib/Nav';
 import MenuItem from 'react-bootstrap/lib/MenuItem';
 import NavDropdown from 'react-bootstrap/lib/NavDropdown';
 import NavItem from 'react-bootstrap/lib/NavItem';		
-import {Row, Col, Grid , FormGroup, FormControl,Media, Image, Button} from 'react-bootstrap';
+import {Row, Col, Grid ,Media, Image,} from 'react-bootstrap';
 import './HeaderStyle.css';
 import {
-  BrowserRouter as Router,
-  Route,
   Link
 } from "react-router-dom";
-import ShortStories from './ShortStories';
-import MyEditor from './MyEditor';
-import Dropdown from './Dropdown';
 import { bell} from 'react-icons-kit/icomoon/bell';
 import Icon from 'react-icons-kit';
-import { connect } from 'react-redux';		
+import { SET_NOTIFICATION_COUNT } from '../constants/actionTypes';
+import {connect} from 'react-redux';
+import agent from './../agent';
+import moment from 'moment';
+
+
+const mapStateToProps = state => {
+  return {
+    
+    notificationCount:state.common.notificationCount
+  }};								
+
+const mapDispatchToProps = dispatch => ({
+  onSetNotificationCount:(count)=>
+	dispatch({type: SET_NOTIFICATION_COUNT, count})
+
+});
+
 
 const Notification=props =>{
-	console.log(props.notification.slug)
+	if(props.notification){
+	var notificationMessage=props.notification.from.username+" "+props.notification.verb;
+	
+	var time=moment(props.notification.createdAt).fromNow();
+	console.log("time",time)
 	return(
 	<MenuItem className="notification-card">
 								<div>
@@ -29,14 +45,16 @@ const Notification=props =>{
 										</Media.Left>
 										<Media.Body>
 											<Link to={`/article/${props.notification.slug}`}>
-												<p><b>{props.notification.message}</b></p>
-												<p><i>1 minute ago</i></p>
+												<p><b>{notificationMessage}</b></p>
+												<p><i>{time}</i></p>
 											</Link>
 										</Media.Body>
 									</Media>
 								</div>
 						</MenuItem>
 	)
+}
+else return null;
 	}					
 
 const LoggedOutView=props=>{
@@ -75,13 +93,12 @@ const LoggedOutView=props=>{
 return null;
 }
 
-const LoggedInView=props =>{
-	if(props.currentUser){
-		
-		console.log("logged IN ", props.notifications);
-		var message=props.notifications?props.notifications.map(notification => <Notification notification={notification}/>):"all"
-		var newNotificationCount=(props.notifications.length>0)?<span class="badge badge-light">{props.notifications.length}</span>:""
-		
+class LoggedInView extends React.Component{
+	render(){
+	if(this.props.currentUser){	
+		console.log("logged IN ", this.props.notifications);
+		var message=this.props.notifications?this.props.notifications.map(notification => <Notification notification={notification}/>):"all"
+		var newNotificationCount=(this.props.notificationCount>0)?<span class="badge badge-light">{this.props.notificationCount}</span>:""
 		
 		return(
 			<div className= "HeaderContainer" >  
@@ -99,7 +116,7 @@ const LoggedInView=props =>{
 							<strong>Write</strong>
 						</Link>
 					</NavItem>
-					<NavDropdown title={<span className="link"><strong>Find</strong> </span>} id="basic-nav-dropdown" >
+					<NavDropdown title={<span className="link"><strong>Find</strong> </span>} id="basic-nav-dropdown"  >
 					
 					
 							<MenuItem>
@@ -119,7 +136,7 @@ const LoggedInView=props =>{
 							<MenuItem className="dropdown-link">
 								<Link to='/genre/thriller' className="link">	Short Stories</Link>
 							</MenuItem>
-							<MenuItem className="dropdown-link" className="link">	
+							<MenuItem className="dropdown-link">	
 								<Link to='/genre/adventure' className="link">Adventure</Link>
 							</MenuItem>
 							<MenuItem >
@@ -171,7 +188,7 @@ const LoggedInView=props =>{
 					<NavDropdown title={
                     <div className="pull-left">
                         <Icon size={18} icon={bell}/>{newNotificationCount}
-                    </div>} id="basic-nav-dropdown" >
+                    </div>} id="basic-nav-dropdown"  onClick={()=> this.props.removeNotificationCount()}>
 						  {message}
 
 							
@@ -180,9 +197,9 @@ const LoggedInView=props =>{
 					
 					
 					<NavItem>
-						<Link to={`/@${props.currentUser.username}`} className="link">
-							<img src={props.currentUser.image} className="user-pic"  />
-								<strong>{props.currentUser.username}</strong>
+						<Link to={`/@${this.props.currentUser.username}`} className="link">
+							<img src={this.props.currentUser.image} className="user-pic"  />
+								<strong>{this.props.currentUser.username}</strong>
 						</Link>
       				</NavItem>
 					
@@ -200,12 +217,27 @@ const LoggedInView=props =>{
 		
 		)}
 		
-		return null;
+		else return null;
 		}
+	}
 		
 
 
 class Header extends React.Component{
+	constructor(){
+		super()
+		
+		this.removeNotificationCount=this.removeNotificationCount.bind(this)
+		
+		}
+	
+    removeNotificationCount(){
+		
+		if(this.props.notificationCount>0){
+			agent.Notifications.markRead();
+		this.props.onSetNotificationCount(0);
+	}
+		}
     
 	render(){
 		console.log("header", this.props.notifications)
@@ -213,10 +245,13 @@ class Header extends React.Component{
 		 <nav className="navbar navbar-light">
           <Link to="/" className="navbar-brand"></Link>
           <LoggedOutView currentUser={this.props.currentUser} />
-          <LoggedInView currentUser={this.props.currentUser} notifications={this.props.notifications}/>
+          <LoggedInView currentUser={this.props.currentUser} 
+						notifications={this.props.notifications}
+						removeNotificationCount={this.removeNotificationCount}
+						notificationCount={this.props.notificationCount}/>
 		 </nav>
 			)
 		}
 	}
 	
-	export default Header;
+	export default connect(mapStateToProps, mapDispatchToProps)(Header);

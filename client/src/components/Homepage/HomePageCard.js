@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Row, Col, Grid, Media} from 'react-bootstrap';
+import { Col} from 'react-bootstrap';
 import {Link} from 'react-router-dom'
 import './HomePageStyle.css';
 
