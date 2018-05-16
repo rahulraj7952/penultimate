@@ -239,12 +239,14 @@ class Header extends React.Component{
 		}
     
 	render(){
-		console.log("header", this.props.notifications)
+		console.log("header", this.props.notifications.length)
 		var count =0;
-	this.props.notifications.forEach(notification=>{if(notification.readState==false){
-		console.log("increasing count");
-		count++;}})
-	if(count>0){this.props.onSetNotificationCount(count)}
+		if (this.props.notifications.length>0){
+			this.props.notifications.forEach(notification=>{if(notification.readState==false){
+			console.log("increasing count");
+			count++;}})
+		if(count>0){this.props.onSetNotificationCount(count)}
+	}
 		return(
 		 <nav className="navbar navbar-light">
           <Link to="/" className="navbar-brand"></Link>

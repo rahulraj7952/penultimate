@@ -19,8 +19,8 @@ exports.findAll = function(req, res, next) {
 		
 		else if(notifications.length==0){
 			console.log("no notification till now")
-			var first=[{"from":{"username":"site name"}, "verb":"welcomes you", "readState":false}];
-			return res.json(first)}
+			var first=[{"from":{"username":"site name"}, "verb":"welcomes you", "readState":true}];
+			return res.json({notifications:first})}
 		else {
 			console.log("notifications.found", notifications);
 			return res.json({
