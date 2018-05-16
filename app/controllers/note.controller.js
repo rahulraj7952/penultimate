@@ -53,7 +53,7 @@ var notification=new Notification();
 notification.to=user.followers;
 notification.from= user.id;
 notification.verb="posted a chapter";
-notification.link=note.slug;
+notification.link=req.params.bookId;
 
 notification.save();
 
