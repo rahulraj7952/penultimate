@@ -63,7 +63,7 @@ const LoggedOutView=props=>{
 			<Navbar collapseOnSelect className="Menutab">
   				<Navbar.Header>
     				<Navbar.Brand>
-      				<Link to="/"> penUltimate</Link>
+      				<Link to="/"> LetterShack</Link>
     				</Navbar.Brand>
     				<Navbar.Toggle />
   				</Navbar.Header>
@@ -104,7 +104,7 @@ class LoggedInView extends React.Component{
 			<Navbar collapseOnSelect className="Menutab">
   				<Navbar.Header>
     				<Navbar.Brand >
-      				<Link to="/" className="link"> <strong>penUltimate</strong></Link>
+      				<Link to="/" className="link"> <strong>LetterShack</strong></Link>
     				</Navbar.Brand>
     				<Navbar.Toggle />
   				</Navbar.Header>
