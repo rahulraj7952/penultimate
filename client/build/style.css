@@ -339,7 +339,7 @@ img {
           .header-area .navbar .navbar-nav .nav-link {
             padding: 0.5em; } }
       .header-area .navbar .navbar-nav .nav-item.active .nav-link {
-        color: #ffffff; }
+        color: #ffffff;}
       @media only screen and (min-width: 992px) and (max-width: 1199px) {
         .header-area .navbar .navbar-nav {
           margin-right: 30px; } }

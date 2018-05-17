@@ -5,7 +5,6 @@ import Icon from 'react-icons-kit';
 import { pen } from 'react-icons-kit/icomoon/pen';
 import { eye} from 'react-icons-kit/icomoon/eye';
 import { starEmpty} from 'react-icons-kit/icomoon/starEmpty';	
-import b21 from '../assets/img/blog-img/b21.jpg';
 		
 class ListComponent extends React.Component {
 				render(){

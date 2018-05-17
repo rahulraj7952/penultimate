@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Col} from 'react-bootstrap';
 import {Link} from 'react-router-dom'
 //import './HomePageStyle.css';
-import b3 from '../../assets/img/blog-img/b3.jpg';
 
 class HomePageCard extends React.Component{
 		

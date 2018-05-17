@@ -17,8 +17,6 @@ import Footer from '../Footer'
 import { pen } from 'react-icons-kit/icomoon/pen';
 import { eye} from 'react-icons-kit/icomoon/eye';
 import { starEmpty} from 'react-icons-kit/icomoon/starEmpty';
-import b2 from '../../assets/img/blog-img/b2.jpg';
-import b12 from '../../assets/img/blog-img/b12.jpg';
 
 
 const mapStateToProps = state => ({
@@ -188,31 +186,9 @@ class HomePage extends React.Component{
                     {homePagePosts}
                 </div>
 					<Sidebar/>
-            </div>
-
-            
-
-            
+            </div>  
         </div>
     </div>
-				
-					
-						
-			
-				<Grid>
-					<hr/>
-					<Row>
-						<Col>
-							
-						</Col>
-					
-					</Row>
-					<br/>
-        			
-        			 
-      		
-				<br/>
-				</Grid>
 				<Footer/>
 			</span>
     	)
