@@ -5,7 +5,6 @@ import MenuItem from 'react-bootstrap/lib/MenuItem';
 import NavDropdown from 'react-bootstrap/lib/NavDropdown';
 import NavItem from 'react-bootstrap/lib/NavItem';		
 import {Row, Col, Grid ,Media, Image,} from 'react-bootstrap';
-import './HeaderStyle.css';
 import {
   Link
 } from "react-router-dom";
@@ -59,32 +58,39 @@ else return null;
 const LoggedOutView=props=>{
 	if(!props.currentUser){
 		return(
-		<div className= "HeaderContainer" >  
-			<Navbar collapseOnSelect className="Menutab">
-  				<Navbar.Header>
-    				<Navbar.Brand>
-      				<Link to="/"> LetterShack</Link>
-    				</Navbar.Brand>
-    				<Navbar.Toggle />
-  				</Navbar.Header>
-  				<Navbar.Collapse>
-    			
-    			<Nav pullRight>
-					<NavItem eventKey={1} >
-						<Link to='/signup'>
-							SignUp
-						</Link>
-      				</NavItem>
-					<NavItem eventKey={2} href="#">
-						<Link to='/login'>
-							SignIn
-						</Link>
-					</NavItem>
-				</Nav>
-  				</Navbar.Collapse>																	
-			</Navbar>
-					
-		</div>	
+		<header className="header-area">
+        <div className="container">
+            <div className="row">
+                <div className="col-12">
+                    <nav className="navbar navbar-expand-lg">
+                        <Link to="/" className="nav-link">LetterShack</Link>
+                       
+                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#worldNav" aria-controls="worldNav" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
+                       
+                        <div className="collapse navbar-collapse" id="worldNav">
+                            <ul className="navbar-nav ml-auto">
+                            
+                                <li className="nav-item">
+                                    <Link to="/login" className="nav-link">Login</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to="/signup" className="nav-link">Sign Up</Link>
+                                </li>
+                               
+                            </ul>
+                            <div id="search-wrapper">
+                                <form action="#">
+                                    <input type="text" id="search" placeholder="Search something..."/>
+                                    <div id="close-icon"></div>
+                                    <input className="d-none" type="submit" value=""/>
+                                </form>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
 		
 		)
 		
@@ -100,120 +106,62 @@ class LoggedInView extends React.Component{
 		var newNotificationCount=(this.props.notificationCount>0)?<span class="badge badge-light">{this.props.notificationCount}</span>:""
 		
 		return(
-			<div className= "HeaderContainer" >  
-			<Navbar collapseOnSelect className="Menutab">
-  				<Navbar.Header>
-    				<Navbar.Brand >
-      				<Link to="/" className="link"> <strong>LetterShack</strong></Link>
-    				</Navbar.Brand>
-    				<Navbar.Toggle />
-  				</Navbar.Header>
-  				<Navbar.Collapse>
-    			<Nav>
-					<NavItem>
-						<Link to='/myworks'className="link">
-							<strong>Write</strong>
-						</Link>
-					</NavItem>
-					<NavDropdown title={<span className="link"><strong>Find</strong> </span>} id="basic-nav-dropdown"  >
-					
-					
-							<MenuItem>
-								<Link to='/listing/agents' className="link" >Agents</Link>
-							</MenuItem>
-							<MenuItem >
-								<Link to='/listing/publishers' className="link">Publishers</Link>
-							</MenuItem>
-							<MenuItem >
-								<Link to='/listing/editors' className="link">Editors</Link>
-							</MenuItem>
-					</NavDropdown>
-					<NavDropdown title={<span className="link"><strong>Browse</strong> </span>} id="basic-nav-dropdown" 	>
-					
-					<Row className="dropdown-multi">
-						<Col md={6} className="dropdown-link"> 
-							<MenuItem className="dropdown-link">
-								<Link to='/genre/thriller' className="link">	Short Stories</Link>
-							</MenuItem>
-							<MenuItem className="dropdown-link">	
-								<Link to='/genre/adventure' className="link">Adventure</Link>
-							</MenuItem>
-							<MenuItem >
-								<Link to='/genre/comedy' className="link">Comedy</Link>
-							</MenuItem>
-							<MenuItem >
-								<Link to='/genre/drama' className="link">	Drama</Link>
-							</MenuItem>
-							<MenuItem >
-								<Link to='/genre/horror' className="link">	Horror</Link>
-							</MenuItem>
-							<MenuItem divider />
-							<MenuItem >
-								<Link to='/genre/satire' className="link">	Satire</Link>
-							</MenuItem>
-							<MenuItem >
-								<Link to='/genre/screenplay' className="link">	Screenplay</Link>
-							</MenuItem>
-						</Col>
-						<Col md={6}>
-							<MenuItem >
-								<Link to='/genre/tragedy' className="link">	Tragedy</Link>
-							</MenuItem>
-							<MenuItem >
-								<Link to='/genre/fantasy' className="link">	Fantasy</Link>
-							</MenuItem>
-							<MenuItem >
-								<Link to='/genre/mythology' className="link">	Mythology</Link>
-							</MenuItem>
-							<MenuItem >
-								<Link to='/genre/romance' className="link">	Romance</Link>
-							</MenuItem>
-							<MenuItem >
-								<Link to='/genre/mystery' className="link">	Mystery</Link>
-							</MenuItem>
-							<MenuItem divider />
-							<MenuItem >
-								<Link to='/genre/plays' className="link">	Plays</Link>
-							</MenuItem>
-							<MenuItem >
-								<Link to='/genre/poetry' className="link">	Poetry</Link>
-							</MenuItem>
-						</Col>
-					</Row>
-					
-					</NavDropdown>
-    			</Nav>
-    			<Nav pullRight>
-					<NavDropdown title={
-                    <div className="pull-left">
-                        <Icon size={18} icon={bell}/>{newNotificationCount}
-                    </div>} id="basic-nav-dropdown"  onClick={()=> this.props.removeNotificationCount()}>
-						  {message}
-
-							
-					</NavDropdown>
-					
-					
-					
-					<NavItem>
-						<Link to={`/@${this.props.currentUser.username}`} className="link">
-							<img src={this.props.currentUser.image} className="user-pic"  />
+		
+    <header className="header-area">
+        <div className="container">
+            <div className="row">
+                <div className="col-12">
+                    <nav className="navbar navbar-expand-lg ">
+                        <Link to="/" className="nav-link">LetterShack</Link>
+                       
+                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#worldNav" aria-controls="worldNav" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
+                       
+                        <div className="collapse navbar-collapse" id="worldNav">
+                            <ul className="navbar-nav ml-auto">
+                                <li className="nav-item ">
+                                    <Link to="myworks" className="nav-link">Write </Link>
+                                </li>
+                                <li className="nav-item dropdown">
+                                    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Find</a>
+                                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <Link to="/listing/agents" className="dropdown-item" >Agents</Link>
+                                        <Link to="/listing/agents"className="dropdown-item" >Publisher</Link>
+                                        <Link to="/listing/agents" className="dropdown-item">Editors</Link>
+                                    </div>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="nav-link" href="#">Browse</a>
+                                </li>
+                                <li className="nav-item dropdown">
+                                    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" onClick={()=> this.props.removeNotificationCount()} role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-bell" aria-hidden="true">{newNotificationCount}</span></a>
+									<div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                       {message}
+                                    </div>
+                                </li>
+                                <li className="nav-item">
+                                <Link to={`/@${this.props.currentUser.username}`} className="nav-link">
+									<img src={this.props.currentUser.image} className="user-pic"  />
 								<strong>{this.props.currentUser.username}</strong>
-						</Link>
-      				</NavItem>
-					
-					<NavItem>
-						<Link to='/settings' className="link">
-							<strong>Settings</strong>
-						</Link>
-					</NavItem>
-				</Nav>
-  				</Navbar.Collapse>																	
-			</Navbar>
-					
-		</div>	
-		
-		
+								</Link>
+								</li>
+                                <li className="nav-item">
+                                    <Link to="/settings" className="nav-link">Settings</Link>
+                                </li>
+                               
+                            </ul>
+                            <div id="search-wrapper">
+                                <form action="#">
+                                    <input type="text" id="search" placeholder="Search something..."/>
+                                    <div id="close-icon"></div>
+                                    <input className="d-none" type="submit" value=""/>
+                                </form>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
 		)}
 		
 		else return null;
@@ -245,7 +193,7 @@ class Header extends React.Component{
 			this.props.notifications.forEach(notification=>{if(notification.readState==false){
 			console.log("increasing count");
 			count++;}})
-		if(count>0){this.props.onSetNotificationCount(count)}
+		if(count>0){this.props.onSetNotificationCount(0)}
 	}
 		return(
 		 <nav className="navbar navbar-light">

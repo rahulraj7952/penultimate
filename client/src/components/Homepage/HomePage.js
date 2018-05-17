@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Row, Col, Grid, Media} from 'react-bootstrap';
 import HomePageCard from './HomePageCard';
-import './HomePageStyle.css';
+//import './HomePageStyle.css';
 import {connect} from 'react-redux';
 import MultipleItemCarousel from '../MultipleItemCarousel';
+import Sidebar from '../Sidebar'
 import agent from '../../agent';
 import {
   HOME_PAGE_LOADED,
@@ -12,9 +13,13 @@ import {
   SET_NOTIFICATION_COUNT
 } from '../../constants/actionTypes';
 import Icon from 'react-icons-kit';
+import Footer from '../Footer'
 import { pen } from 'react-icons-kit/icomoon/pen';
 import { eye} from 'react-icons-kit/icomoon/eye';
 import { starEmpty} from 'react-icons-kit/icomoon/starEmpty';
+import b2 from '../../assets/img/blog-img/b2.jpg';
+import b12 from '../../assets/img/blog-img/b12.jpg';
+
 
 const mapStateToProps = state => ({
 	
@@ -59,7 +64,7 @@ class HomePage extends React.Component{
 
 	render(){
 		
-			const homePagePosts=this.props.homePageBooks.books?this.props.homePageBooks.books.map(book => <div><HomePageCard book={book} key={book.slug}/></div>):"loading bro"
+			const homePagePosts=this.props.homePageBooks.books?this.props.homePageBooks.books.map(book => <span><HomePageCard book={book} key={book.slug}/></span>):"loading bro"
 			
 			const genre1=this.props.genre1?<span><MultipleItemCarousel title={"Recommended"} books={this.props.genre1.books}/>
 						<MultipleItemCarousel title={"Horror"} books={this.props.genre1.books}/>
@@ -67,142 +72,149 @@ class HomePage extends React.Component{
 						
 			 
 		return(
-				<div className="homepage-container">
-			{/*	<Grid>
-					<Col>
-						<div className="wrapper" >
-					a		<img  className="mainpage-picture" src="http://via.placeholder.com/1300x300"/>
-							<div className="description">
-								<p class='description_content'>Get Discovered</p>
-							</div>
-												
-						</div>					
-					<hr/>
-					</Col>
-				</Grid>	*/}
+			<span>
+			<div className="main-content-wrapper ">
+        <div className="container" >
+            <div className="row justify-content-center">
+                <div className="col-12 col-lg-8">
+                    <div className="post-content-area mb-50">
+                        <div className="world-catagory-area">
+
+                                    <div className="row">
+                                        <div className="col-12 col-md-6">
+                                                <div className="single-blog-post">
+                                                    
+                                                    <div className="post-thumbnail">
+                                                        <img src="img/blog-img/b1.jpg" alt=""/>
+                                                        
+                                                        <div className="post-cta"><a href="#">travel haha 205</a></div>
+                                                    </div>
+                                                 
+                                                    <div className="post-content">
+                                                        <a href="#" className="headline">
+                                                            <h5>209 How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</h5>
+                                                        </a>
+                                                        <p>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in...</p>
+                                                   
+                                                        <div className="post-meta">
+                                                            <p><a href="#" className="post-author">Katy Liu</a> on <a href="#" className="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                      
+                                        </div>
+
+                                        <div className="col-12 col-md-6">
+                                        
+                                            <div className="single-blog-post post-style-2 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.2s">
+                                             
+                                                <div className="post-thumbnail">
+                                                    <img src="img/blog-img/b10.jpg" alt=""/>
+                                                </div>
+                                            
+                                                <div className="post-content">
+                                                    <a href="#" className="headline">
+                                                        <h5>274How Did van Gogh’s Turbulent Mind Depict One of the Most</h5>
+                                                    </a>
+                                               
+                                                    <div className="post-meta">
+                                                        <p><a href="#" className="post-author">Katy Liu</a> on <a href="#" className="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                         
+                                            <div className="single-blog-post post-style-2 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.3s">
+                                            
+                                                <div className="post-thumbnail">
+                                                    <img src="img/blog-img/b11.jpg" alt=""/>
+                                                </div>
+                                             
+                                                <div className="post-content">
+                                                    <a href="#" className="headline">
+                                                        <h5>291How Did van Gogh’s Turbulent Mind Depict One of the Most</h5>
+                                                    </a>
+                                              
+                                                    <div className="post-meta">
+                                                        <p><a href="#" className="post-author">Katy Liu</a> on <a href="#" className="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            
+                                            <div className="single-blog-post post-style-2 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.4s">
+                                             
+                                                <div className="post-thumbnail">
+                                                    <img src="img/blog-img/b12.jpg" alt=""/>
+                                                </div>
+                                            
+                                                <div className="post-content">
+                                                    <a href="#" className="headline">
+                                                        <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most</h5>
+                                                    </a>
+                                                
+                                                    <div className="post-meta">
+                                                        <p><a href="#" className="post-author">Katy Liu</a> on <a href="#" className="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                          
+                                            <div className="single-blog-post post-style-2 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.5s">
+                                             
+                                                <div className="post-thumbnail">
+                                                    <img src="img/blog-img/b13.jpg" alt=""/>
+                                                </div>
+                                              
+                                                <div className="post-content">
+                                                    <a href="#" className="headline">
+                                                        <h5>How Did van Gogh’s Turbulent Mind Depict One of the Most</h5>
+                                                    </a>
+                                                
+                                                    <div className="post-meta">
+                                                        <p><a href="#" className="post-author">332 Katy Liu</a> on <a href="#" className="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        
+                                    
+                                </div>
+                            </div>      
+                        </div>
+                    </div>
+                    {genre1}
+                    <h4 className="mt-15"> Featured Books</h4>
+                    {homePagePosts}
+                </div>
+					<Sidebar/>
+            </div>
+
+            
+
+            
+        </div>
+    </div>
 				
-				<Grid>
-					<Row className="main-container">
-						<Col md={6}>
-							<h4>Featured</h4>
-							<hr/>	
-							 <Media>
-								
-								<Media.Body>
-								<Col>
-								<Media.Heading>Media Heading</Media.Heading>
-								
-								<h5><Icon size={14} icon={pen}/> Joe Root</h5>
-								<h5> #3 in Fantasy </h5>
-								<h6><Icon size={14} icon={eye}/> 3.4k <Icon size={14} icon={starEmpty}/> 4.6 </h6>
-								<br/>
-								
-								<p>	Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante 
-								sollicitudin commodo. Cras purus odio, vestibulum in vulputate at,tempus viverra 
-								turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue 
-								felis in faucibus ras sit amet nibh libero, in gravida nulla. 
-								</p>
-								</Col>
-								</Media.Body>
-									<Media.Right>
-									<img width={200} height={300} src="https://99designs-blog.imgix.net/wp-content/uploads/2017/12/attachment_83090027.jpg?auto=format&q=60&fit=max&w=930" alt="thumbnail" />
-								</Media.Right>
-							</Media>
-							<hr/>
-						</Col>
-						<Col md={3}>
-							<h5>Trending</h5>
-							 <Media>
-								
-								<Media.Body>
-								<h4>Media Heading </h4>
-								<h6> by Joe Root </h6>
-								
-								<p>	Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante 
-								sollicitudin commodo.
-								</p>
-								</Media.Body>
-								<Media.Right>
-									<img width={100} height={150} src="http://wordwenches.typepad.com/.a/6a00d8341c84c753ef0176159a1195970c-800wi" alt="thumbnail" />
-								</Media.Right>
-							</Media>
-							<Media>
-								
-								<Media.Body>
-								<h4>Media Heading </h4>
-								
-								<p>	Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante 
-								</p>
-								</Media.Body>
-								<Media.Right>
-									<img width={100} height={150} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR4wFJXpH6kQTt6gWGzhWF8TBqupVo7ZER6xaWrSaQaMRD5msMig" alt="thumbnail" />
-								</Media.Right>
-							</Media>
-						</Col>
-						<Col md={3}>
-							<h5>Top of the Charts</h5>
-							 <Media>
-								
-								<Media.Body>
-								<h5>Media Heading </h5>
-								<h6> by Joe Root </h6>
-								
-								<p>Last Update:	Agents page updated
-								</p>
-								</Media.Body>
-							</Media>
-							<Media>
-								
-								<Media.Body>
-								<h5>Media Heading </h5>
-								<h6> by Joe Root </h6>
-								
-								<p>	Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante 
-								</p>
-								</Media.Body>
-								
-							</Media>
-							<Media>
-								
-								<Media.Body>
-								<h5>Media Heading </h5>
-								<h6> by Joe Root </h6>
-								
-								<p>	Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante 
-								</p>
-								</Media.Body>
-								
-							</Media>
-						</Col>
+					
 						
-						
-					</Row>
-					<Row>	
-						{genre1}
-					</Row>
-				</Grid>		
+			
 				<Grid>
 					<hr/>
 					<Row>
 						<Col>
-							<p className="mainpage-subheading"> Featured Articles</p>
+							
 						</Col>
-						
+					
 					</Row>
 					<br/>
-        			<ul>
-        			 {homePagePosts}
-      		</ul>
-      			
-      			
+        			
+        			 
+      		
 				<br/>
-					
 				</Grid>
-				
-				</div>
-				
-
-    	
+				<Footer/>
+			</span>
     	)
     	
 	}

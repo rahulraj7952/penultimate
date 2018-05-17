@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Col} from 'react-bootstrap';
 import {Link} from 'react-router-dom'
-import './HomePageStyle.css';
+//import './HomePageStyle.css';
+import b3 from '../../assets/img/blog-img/b3.jpg';
 
 class HomePageCard extends React.Component{
 		
@@ -12,21 +13,32 @@ class HomePageCard extends React.Component{
 		//const Content= () => (
   //<div dangerouslySetInnerHTML={{ __html: htmlString }} />
   //);
-		return(
-				<Col xs={6} md={4}>				
-				<div className="cards">
-  					<img className="card-image" src="http://via.placeholder.com/200x300" alt="Avatar"/ >
-						<Link to={`/`} className="preview-link">																																																																
-						<div className="card-texts">
-						<h5><b>{this.props.book.title}</b></h5>
-						<p> {this.props.book.author.username} {this.props.book.createdAt}</p>
-						<h7>Description should go here</h7>
-						</div>
-						</Link>
-    				
-				</div> 
-				<br/>
-				</Col>	
+		return(                 
+				
+                                        <div className="col-12 col-lg-12 mb-15 mt-15">
+                                           
+                                            <div className="single-blog-post post-style-4 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.2s">
+                                               
+                                                <div className="post-thumbnail">
+                                                    <img src="http://via.placeholder.com/150x225"  alt=""/>
+                                                    
+                                                    <div className="post-cta"><a href="#">{this.props.book.genre}</a></div>
+                                                </div>
+                                               
+                                                <div className="post-content">
+                                                    <Link to='/' className="headline">
+                                                        <h5>{this.props.book.title}</h5>
+                                                    </Link>
+                                                    <p>1208How Did van Gogh’s Turbulent Mind Depict One of thein...</p>
+                                              
+                                                    <div className="post-meta">
+                                                        <p><Link to="/" className="post-author">{this.props.book.author.username}</Link> on <Link to="/" className="post-date">{this.props.book.createdAt}</Link></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                          
+                             
 				)
 			}
 		}

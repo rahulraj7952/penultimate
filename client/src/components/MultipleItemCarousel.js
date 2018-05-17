@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Slider from "react-slick";
 import "./slick-carousel/slick/slick.css"; 
 import "./slick-carousel/slick/slick-theme.css";
-import "./Homepage/HomePageStyle.css";
+//import "./Homepage/HomePageStyle.css";
 import ListComponent from "./ListComponent"
 
 export default class MultipleItemsCarousel extends Component {
@@ -13,17 +13,19 @@ export default class MultipleItemsCarousel extends Component {
       dots: false,
       infinite: true,
       speed: 500,
-      slidesToShow: 3,
+      slidesToShow: 2,
       slidesToScroll: 1
     };
     
     return (
-   <div >
-	<h3 className="homepage-subheading">{this.props.title}</h3>
-     <span className="carousel"><Slider {...settings}>
-         { this.props.books.map(book => <div><ListComponent book={book} key={book.slug}/></div>)}
+   <span >
+	<h3 className="mb-15 mt-15">{this.props.title}</h3>
+	<span className="row">
+     <span className="col-lg-12"><Slider {...settings}>
+         { this.props.books.map(book => <span><ListComponent book={book} key={book.slug}/></span>)}
       </Slider></span>
-	</div>
+    </span>
+	</span>
       
      
     );

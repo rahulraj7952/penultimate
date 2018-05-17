@@ -29,7 +29,7 @@ const mapDispatchToProps = dispatch => ({
 const TableOfContents=props =>{
 	console.log("Table of contents", props.chapter.title);
 	return(
-		<a onClick={()=>props.SetChapter(props.chapter)}><div>{props.chapter.title} </div></a>
+		<a onClick={()=>props.SetChapter(props.chapter)}><div className="chapter-name">{props.chapter.title} </div></a>
 	)
 	
 	}
@@ -40,7 +40,7 @@ const ChapterComponent=props =>{
 		const Content= () => (
   <div dangerouslySetInnerHTML={{ __html: htmlString }} />)
 	return(
-	<div>	
+	<div className="mt-30">	
 	<h4>{props.chapter.title}</h4>
 	<div><Content/></div>
 	</div>
@@ -95,11 +95,14 @@ const title = 'GitHub';
 			    <img class="img-fluid" src="http://via.placeholder.com/120x180" alt=""/>	
 			    </Col>
 			    <Col md={6}>
-				<h1><b>{this.props.book.title}</b></h1>
-				<h5><b>{this.props.book.genre}</b></h5>
-				<span> by<Link to={`/@${this.props.book.author.username}`} className="author">
+				<h1 className="mb-15">{this.props.book.title}</h1>
+				<h4>{this.props.book.genre}</h4>
+				<span> by<Link to={`/@${this.props.book.author.username}`} className="mb-30">
 				<h4>{this.props.book.author.username}</h4>
 				</Link></span>
+				
+					<ChapterComponent chapter={this.props.chapter}/>
+
 				</Col>
 				<Col md={4}>
 					<h4>Table of Contents</h4>
@@ -179,15 +182,7 @@ const title = 'GitHub';
 </div>
 */}
           
-		<br/>
-		<br/>
-			<Row>
-				<Col md={6} mdOffset={2} className="article-body" >		
-					<ChapterComponent chapter={this.props.chapter}/>
-				</Col>
-					
-			</Row>
-          </Grid>
+		</Grid>
       </div>
     );
   }

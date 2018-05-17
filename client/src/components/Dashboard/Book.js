@@ -30,25 +30,30 @@ class Book extends React.Component{
 	render(){
 		return(
 		          
-    <div class="container">
-      <div class="row">
-
-        <div class="col-md-2">
-          <img class="img-fluid" src="http://via.placeholder.com/150x225" alt=""/>
-        </div>
-        
-
-        <div class="col-md-4">
-          <h4 class="my-3">{this.props.book.title}</h4>
-          <p>{this.props.book.description}</p>
-          <Link to={`myworks/${this.props.book.slug}`}><Button bsStyle="warning" onClick={()=>{this.selectBook(this.props.book)}}>Continue Writing</Button></Link>
-			
-        </div>
+		  <div className="col-12 col-lg-7 mb-15 mt-15">
+                                           
+                                            <div className="single-blog-post post-style-4 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.2s">
+                                               
+                                                <div className="post-thumbnail">
+                                                    <img src="http://via.placeholder.com/150x225"  alt=""/>
+                                                </div>
+                                               
+                                                <div className="post-content">
+                                                    <Link to='/' className="headline">
+                                                        <h5>{this.props.book.title}</h5>
+                                                    </Link>
+                                                    <p>1208How Did van Gogh’s Turbulent Mind Depict One of thein...</p>
+                                              
+                                                   <Link to={`myworks/${this.props.book.slug}`}><button className="btn btn-outline-primary" onClick={()=>{this.selectBook(this.props.book)}}><h4>Continue Writing</h4></button></Link>
+                                                </div>
+                                            </div>
+                                        </div>         
+		          
+		          
+		          
+		          
 		
-      </div>
-      <br/>
-
-    </div>
+	
 	)
 }
 }

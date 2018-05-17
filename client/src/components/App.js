@@ -22,6 +22,7 @@ import DraftEditor from './DraftEditor';
 import agent from '../agent';
 import MyWorks from './MyWorks';
 import MyBook from './MyBook';
+import Footer from './Footer';
 import { connect } from 'react-redux';
 import { APP_LOAD, REDIRECT, NEW_NOTIFICATION, SET_NOTIFICATION_COUNT } from '../constants/actionTypes';
 import { store } from '../store';
@@ -126,7 +127,6 @@ return(
 		<Route path="/editor" component={DraftEditor}/>
 		<Route exact path="/" component={HomePage}/>
 		</Switch>
- 
     </div>
 )
 }

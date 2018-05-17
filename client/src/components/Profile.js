@@ -154,7 +154,7 @@ if(this.props.books){
 				
 				</Col>
 			</Grid>
-				<button onClick={this.loadMore}>Show more</button>
+				<button onClick={this.loadMore} className="load-more-btn mb-15">Show more</button>
       </div>
       
     )}

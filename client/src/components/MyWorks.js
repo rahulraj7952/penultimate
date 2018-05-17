@@ -38,10 +38,10 @@ class MyWorks extends React.Component{
 	return(<Grid>
 				<Row>
 					<Col mdOffset={2}>
-						<div><Link to="write"><Button bsStyle="success"className="action-button"> Create a new Work!</Button></Link></div>
+						<div><Link to="write"><button className="btn btn-outline-primary"><h4> Create a new Work!</h4></button></Link></div>
 						<br/>
 						<div>or</div><br/>
-						<div><h5><b>Complete your previous work</b></h5></div>
+						<div><h4>Complete your previous work</h4></div>
 						<br/>
 						{myBooks}
 	
