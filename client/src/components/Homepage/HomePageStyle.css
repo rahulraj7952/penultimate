@@ -1,6 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
-
 .cards {
     /* Add shadows to create the "card" effect */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
@@ -25,14 +22,12 @@
 .link{
 color:#555;
 font-size:14px;
-font-family: "Source Sans Pro";
 
 }
 
 .list-link{
 color:#555;
 font-size:14px;
-font-family: "Source Sans Pro";
 
 }
 

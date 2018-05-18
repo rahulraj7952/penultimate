@@ -1,10 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
 
 .article-banner{
 	background-color:#FFF;
-	background-image:url("https://www.publicdomainpictures.net/pictures/150000/velka/banner-header-tapete-145002399028x.jpg");
 	color: #222	;
-	font-family:"Source Sans Pro";
 	width:100%;
 	padding: 25px;
 	margin-bottom: 25px;

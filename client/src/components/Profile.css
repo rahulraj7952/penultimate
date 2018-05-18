@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
 
 .profile-banner { 
 	
@@ -17,7 +17,6 @@
 	
 	background-color:#B4DBC0;
 	color: #444;
-	font-family:"Source Sans Pro";
 	font-size: 24px;
 	width:120%;
 	padding: 10px;
