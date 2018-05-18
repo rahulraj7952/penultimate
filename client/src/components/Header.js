@@ -8,8 +8,6 @@ import {Row, Col, Grid ,Media, Image,} from 'react-bootstrap';
 import {
   Link
 } from "react-router-dom";
-import { bell} from 'react-icons-kit/icomoon/bell';
-import Icon from 'react-icons-kit';
 import { SET_NOTIFICATION_COUNT } from '../constants/actionTypes';
 import {connect} from 'react-redux';
 import agent from './../agent';
@@ -58,7 +56,7 @@ else return null;
 const LoggedOutView=props=>{
 	if(!props.currentUser){
 		return(
-		<header className="header-area">
+		<header className="header-area mb-15">
         <div className="container">
             <div className="row">
                 <div className="col-12">
@@ -107,7 +105,7 @@ class LoggedInView extends React.Component{
 		
 		return(
 		
-    <header className="header-area">
+    <header className="header-area mb-15">
         <div className="container">
             <div className="row">
                 <div className="col-12">
@@ -133,7 +131,7 @@ class LoggedInView extends React.Component{
                                     <a className="nav-link" href="#">Browse</a>
                                 </li>
                                 <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" onClick={()=> this.props.removeNotificationCount()} role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-bell" aria-hidden="true">{newNotificationCount}</span></a>
+                                    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" onClick={()=> this.props.removeNotificationCount()} role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Notifications{newNotificationCount}</a>
 									<div className="dropdown-menu" aria-labelledby="navbarDropdown">
                                        {message}
                                     </div>

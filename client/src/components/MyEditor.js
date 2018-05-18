@@ -3,7 +3,6 @@ import { EditorState, Editor, convertToRaw, convertFromRaw } from 'draft-js';
 import {stateToHTML} from 'draft-js-export-html';
 import {Grid, Row, Col} from 'react-bootstrap';
 import debounce from 'lodash/debounce';
-import "./MyEditor.css";
 import axios from "axios";
 import agent from "../agent";
 import { connect } from 'react-redux';

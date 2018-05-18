@@ -11,7 +11,6 @@ import {
   LOAD_MORE
 } from '../constants/actionTypes';
 import ListComponent from "./ListComponent";
-import "./Profile.css"
 
 const EditProfileSettings = props => {
   if (props.isUser) {

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col, Grid, Media} from 'react-bootstrap';
 import HomePageCard from './HomePageCard';
-//import './HomePageStyle.css';
 import {connect} from 'react-redux';
 import MultipleItemCarousel from '../MultipleItemCarousel';
 import Sidebar from '../Sidebar'
@@ -12,11 +11,8 @@ import {
   NEW_NOTIFICATION,
   SET_NOTIFICATION_COUNT
 } from '../../constants/actionTypes';
-import Icon from 'react-icons-kit';
 import Footer from '../Footer'
-import { pen } from 'react-icons-kit/icomoon/pen';
-import { eye} from 'react-icons-kit/icomoon/eye';
-import { starEmpty} from 'react-icons-kit/icomoon/starEmpty';
+
 
 
 const mapStateToProps = state => ({
@@ -72,7 +68,7 @@ class HomePage extends React.Component{
 		return(
 			<span>
 			<div className="main-content-wrapper ">
-        <div className="container" >
+        <div className="container mt-50" >
             <div className="row justify-content-center">
                 <div className="col-12 col-lg-8">
                     <div className="post-content-area mb-50">

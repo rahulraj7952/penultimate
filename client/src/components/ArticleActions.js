@@ -3,7 +3,6 @@ import React from 'react';
 import agent from '../agent';
 import { connect } from 'react-redux';
 import { DELETE_ARTICLE } from '../constants/actionTypes';
-import "./Article.css"
 
 const mapDispatchToProps = dispatch => ({
   onClickDelete: payload =>

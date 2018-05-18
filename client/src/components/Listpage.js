@@ -7,7 +7,6 @@ import {
   LIST_PAGE_UNLOADED
 } from '../constants/actionTypes';
 import ListComponent from './ListComponent';
-import "./List.css"
 
 const mapStateToProps = state => ({
   ...state.listpage,

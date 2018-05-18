@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import {Grid, Row, Col} from 'react-bootstrap';
 import { ARTICLE_PAGE_LOADED, ARTICLE_PAGE_UNLOADED } from '../constants/actionTypes';
 import ArticleActions from './ArticleActions';
-//import './Article.css';
 import {
   FacebookShareCount,  GooglePlusShareCount,  LinkedinShareCount,
   FacebookShareButton,  GooglePlusShareButton,  LinkedinShareButton,  TwitterShareButton,
