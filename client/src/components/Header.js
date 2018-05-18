@@ -33,22 +33,27 @@ const Notification=props =>{
 	
 	var time=moment(props.notification.createdAt).fromNow();
 	return(
-	<MenuItem className="notification-card">
-								<div>
-									<Media>
-										<Media.Left>
-											<Image width={48} height={48} src="http://www.fiat500owners.com/forum/attachment.php?attachmentid=4220&d=1461347917" alt="thumbnail" circle/>
-										</Media.Left>
-										<Media.Body>
-											<Link to={`book/${props.notification.link}`}>
-												<p><b>{notificationMessage}</b></p>
-												<p><i>{time}</i></p>
-											</Link>
-										</Media.Body>
-									</Media>
-								</div>
-						</MenuItem>
+
+		<div className="col-12 col-lg-12">
+							<div className="single-blog-post post-style-2 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.2s">
+         
+                            <div className="post-thumbnail">
+                                <img className ="img-circle" src="http://via.placeholder.com/60x60" alt="" />
+                            </div>
+                        
+                            <div className="post-content">
+                                <Link to={`/book/${props.notification.link}`}  className="headline">
+                                    <p><b>{notificationMessage}</b></p>
+                                    <p><i>{time}</i></p>
+                                </Link>
+                            </div>
+                        </div>
+                   </div>
+	
+	
 	)
+	
+	
 }
 else return null;
 	}					
@@ -56,7 +61,7 @@ else return null;
 const LoggedOutView=props=>{
 	if(!props.currentUser){
 		return(
-		<header className="header-area mb-15">
+		<header className="header-area mb-50">
         <div className="container">
             <div className="row">
                 <div className="col-12">
@@ -105,7 +110,7 @@ class LoggedInView extends React.Component{
 		
 		return(
 		
-    <header className="header-area mb-15">
+    <header className="header-area ">
         <div className="container">
             <div className="row">
                 <div className="col-12">

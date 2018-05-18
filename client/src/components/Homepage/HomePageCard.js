@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Col} from 'react-bootstrap';
 import {Link} from 'react-router-dom'
-//import './HomePageStyle.css';
+
 
 class HomePageCard extends React.Component{
 		
@@ -25,13 +25,13 @@ class HomePageCard extends React.Component{
                                                 </div>
                                                
                                                 <div className="post-content">
-                                                    <Link to='/' className="headline">
+                                                    <Link to={`/book/${this.props.book.slug}` }className="headline">
                                                         <h5>{this.props.book.title}</h5>
                                                     </Link>
                                                     <p>1208How Did van Gogh’s Turbulent Mind Depict One of thein...</p>
                                               
                                                     <div className="post-meta">
-                                                        <p><Link to="/" className="post-author">{this.props.book.author.username}</Link> on <Link to="/" className="post-date">{this.props.book.createdAt}</Link></p>
+                                                        <p><Link to={`/@${this.props.book.author.username}`} className="post-author">{this.props.book.author.username}</Link> on <Link to="/" className="post-date">{this.props.book.createdAt}</Link></p>
                                                     </div>
                                                 </div>
                                             </div>

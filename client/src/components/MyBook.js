@@ -39,7 +39,7 @@ class MyBook extends React.Component{
 	
 	render(){
 	const chapters=this.props.currentBook?this.props.currentBook.chapters.map(chapter=><ChapterComponent chapter={chapter} key={chapter.id} SetChapter={this.SetChapter}/>):"Loading"
-	return(<Grid>
+	return(<Grid className="mt-50">
 				<Row>
 					<Col mdOffset={2}>
 						<h3>{this.props.currentBook.title}</h3>

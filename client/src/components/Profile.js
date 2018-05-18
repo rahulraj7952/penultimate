@@ -121,7 +121,7 @@ class Profile extends React.Component {
       this.props.profile.username === this.props.currentUser.username;
 if(this.props.books){
     return (
-      <div className="profile-page">
+      <div className="profile-page mt-50">
 
         <div className="profile-banner">
 		   <Grid>

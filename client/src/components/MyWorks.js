@@ -37,11 +37,11 @@ class MyWorks extends React.Component{
 	const myBooks=this.props.books?this.props.books.books.map(book=><Book book={book} key={book.id}/>):"Checking for previous works..."
 	return(<Grid>
 				<Row>
-					<Col mdOffset={2}>
-						<div><Link to="write"><button className="btn btn-outline-primary"><h4> Create a new Work!</h4></button></Link></div>
+					<Col>
+						<div><Link to="write"><button className="btn btn-outline-primary mt-50"><h5> Create a new Work!</h5></button></Link></div>
 						<br/>
 						<div>or</div><br/>
-						<div><h4>Complete your previous work</h4></div>
+						<div><h5>Complete your previous work</h5></div>
 						<br/>
 						{myBooks}
 	

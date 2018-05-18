@@ -7,7 +7,7 @@ class Sidebar extends React.Component{
 		                <div className="col-12 col-md-8 col-lg-4">
                     <div className="post-sidebar-area wow fadeInUpBig" data-wow-delay="0.2s">
                         <div className="sidebar-widget-area">
-                            <h5 className="title">About World</h5>
+                            <h5 className="title">About LetterShack</h5>
                             <div className="widget-content">
                                 <p>2470 The mango is perfect in that it is always yellow and if it’s not, I don’t want to hear about it. The mango’s only flaw, and it’s a minor one, is the effort it sometimes takes to undress the mango, carve it up in a way that makes sense, and find its way to the mouth.</p>
                             </div>

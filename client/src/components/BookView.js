@@ -86,7 +86,7 @@ const title = 'GitHub';
     const canModify = this.props.currentUser &&
       this.props.currentUser.username === this.props.book.author.username;
     return (
-      <div className="book-page">
+      <div className="book-page mt-50">
 		<Grid>
 			
 			<Row>
