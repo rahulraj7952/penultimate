@@ -35,19 +35,21 @@ class MyWorks extends React.Component{
 	
 	render(){
 	const myBooks=this.props.books?this.props.books.books.map(book=><Book book={book} key={book.id}/>):"Checking for previous works..."
-	return(<Grid>
-				<Row>
-					<Col>
-						<div><Link to="write"><button className="btn btn-outline-primary mt-50"><h5> Create a new Work!</h5></button></Link></div>
+	return(<div className="main-content-wrapper">
+			<div className="container">
+				<div className="row justify-content-center">
+					<div  className="col-12 col-lg-8 mb-15 mt-50 ">
+						<div><Link to="write"><button className="btn btn-outline-primary mt-50"><h6> Create a new Work!</h6></button></Link></div>
 						<br/>
 						<div>or</div><br/>
 						<div><h5>Complete your previous work</h5></div>
 						<br/>
 						{myBooks}
 	
-					</Col>
-				</Row>
-			</Grid>)
+					</div>
+				</div>
+			</div>
+			</div>)
 	}
 
 }

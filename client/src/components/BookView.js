@@ -28,7 +28,7 @@ const mapDispatchToProps = dispatch => ({
 const TableOfContents=props =>{
 	console.log("Table of contents", props.chapter.title);
 	return(
-		<a onClick={()=>props.SetChapter(props.chapter)}><div className="chapter-name">{props.chapter.title} </div></a>
+		<a onClick={()=>props.SetChapter(props.chapter)}><div className="chapter-name mt-15">{props.chapter.title} </div></a>
 	)
 	
 	}
@@ -82,32 +82,36 @@ const title = 'GitHub';
     //const markup = { __html: marked(this.props.article.body, { sanitize: true }) };
    {/* const htmlString = this.props.article.contentState;
 		const Content= () => (
-  <div dangerouslySetInnerHTML={{ __html: htmlString }} />)*/}
+  <div danger
+  * ouslySetInnerHTML={{ __html: htmlString }} />)*/}
     const canModify = this.props.currentUser &&
       this.props.currentUser.username === this.props.book.author.username;
     return (
-      <div className="book-page mt-50">
-		<Grid>
-			
-			<Row>
-				<Col md={2}>
-			    <img class="img-fluid" src="http://via.placeholder.com/120x180" alt=""/>	
-			    </Col>
-			    <Col md={6}>
-				<h1 className="mb-15">{this.props.book.title}</h1>
-				<h4>{this.props.book.genre}</h4>
-				<span> by<Link to={`/@${this.props.book.author.username}`} className="mb-30">
-				<h4>{this.props.book.author.username}</h4>
-				</Link></span>
-				
-					<ChapterComponent chapter={this.props.chapter}/>
+      <div className="main-content-wrappe">
+        <div className="container " >
+            <div className="row justify-content-center  ">
+                <div className="col-12 col-lg-2 mt-50">
+			    <img className="img-fluid" src="http://via.placeholder.com/120x180" alt=""/>	
+			    </div>
+			    <div className="col-12 col-lg-6 mt-50">
+					<div className="plain-div">
+						<h1 className="mb-15">{this.props.book.title}</h1>
+							<h4>{this.props.book.genre}</h4>
+							<span> by<Link to={`/@${this.props.book.author.username}`} className="mb-30">
+										<h4>{this.props.book.author.username}</h4>
+									</Link>
+							</span>
+					</div>
+					<div className="plain-div mt-15">
+						<ChapterComponent chapter={this.props.chapter}/>
+					</div>
 
-				</Col>
-				<Col md={4}>
+				</div>
+				<div className="col-12 col-lg-4 mt-50">
 					<h4>Table of Contents</h4>
 					{this.props.book.chapters.map(chapter=><TableOfContents chapter={chapter} SetChapter={this.SetChapter}/>)}
-				</Col>
-			</Row>	
+				</div>
+			</div>	
 			
            {/* <ArticleActions canModify={canModify} article={this.props.book}/>*/}
             
@@ -181,7 +185,7 @@ const title = 'GitHub';
 </div>
 */}
           
-		</Grid>
+		</div>
       </div>
     );
   }

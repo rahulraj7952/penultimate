@@ -68,9 +68,9 @@ class HomePage extends React.Component{
 		return(
 			<span>
 			<div className="main-content-wrapper ">
-        <div className="container mt-50" >
-            <div className="row justify-content-center">
-                <div className="col-12 col-lg-8">
+        <div className="container " >
+            <div className="row justify-content-center ">
+                <div className="col-12 col-lg-8 mt-50">
                     <div className="post-content-area mb-50">
                         <div className="world-catagory-area">
 

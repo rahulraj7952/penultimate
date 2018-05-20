@@ -30,7 +30,7 @@ class Book extends React.Component{
 	render(){
 		return(
 		          
-		  <div className="col-12 col-lg-7 mb-15 mt-15">
+		  <div className="col-12 col-lg-8 mb-15 mt-15">
                                            
                                             <div className="single-blog-post post-style-4 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.2s">
                                                
@@ -44,7 +44,7 @@ class Book extends React.Component{
                                                     </Link>
                                                     <p>1208How Did van Gogh’s Turbulent Mind Depict One of thein...</p>
                                               
-                                                   <Link to={`myworks/${this.props.book.slug}`}><button className="btn btn-outline-primary" onClick={()=>{this.selectBook(this.props.book)}}><h4>Continue Writing</h4></button></Link>
+                                                   <Link to={`myworks/${this.props.book.slug}`}><button className="btn btn-outline-primary" onClick={()=>{this.selectBook(this.props.book)}}><h6>Continue Writing</h6></button></Link>
                                                 </div>
                                             </div>
                                         </div>         

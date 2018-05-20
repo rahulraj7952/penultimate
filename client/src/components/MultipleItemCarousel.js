@@ -12,15 +12,16 @@ export default class MultipleItemsCarousel extends Component {
       dots: false,
       infinite: true,
       speed: 500,
-      slidesToShow: 2,
-      slidesToScroll: 1
+      slidesToShow: 1.9,
+      slidesToScroll: 1,
+      rtl:true
     };
     
     return (
    <span >
-	<h3 className="mb-15 mt-15">{this.props.title}</h3>
+	<h3 className="mb-7 mt-7">{this.props.title}</h3>
 	<span className="row">
-     <span className="col-lg-12"><Slider {...settings}>
+     <span className="col-lg-12" dir="rtl"><Slider {...settings}>
          { this.props.books.map(book => <span><ListComponent book={book} key={book.slug}/></span>)}
       </Slider></span>
     </span>

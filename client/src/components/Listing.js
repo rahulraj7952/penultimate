@@ -56,25 +56,23 @@ const agents=[{
 
 const AgentListingComponent=props =>{
 	return(
-		<Col md={6} className="agent-item">
-			<Media>
-				<Media.Body>	
-					<Media.Heading>
-						
-							<h4><b>{props.agent.username}</b></h4>
-						
-					</Media.Heading>		
-					<h5>Genres: {props.agent.genres[0]} {props.agent.genres[1]} {props.agent.genres[2]}< /h5>	
-					<h5>Clients: {props.agent.clients}</h5>
-					<br/>
-				    <h5>Books: {props.agent.books} </h5>
-					<p>{props.agent.bio}			</p>
-				</Media.Body>
-				<Media.Right>
-					<img width={150} height={150} src="http://via.placeholder.com/200x200" alt="thumbnail" className="list-image" />
-				</Media.Right>
-			</Media><br/>	<hr/>
-			</Col>
+		
+			<div className="mb-15 mt-15">
+							<div className="single-blog-post post-style-4 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.2s">
+         
+                            <div className="post-thumbnail">
+                                <img src="http://via.placeholder.com/120x180" alt=""/>
+                            </div>
+                        
+                            <div className="post-content">
+                                    <h5>{props.agent.username}</h5>
+								<p> Genres: {props.agent.genres[0]} {props.agent.genres[1]} {props.agent.genres[2]}</p>
+                                <p> Clients: {props.agent.clients}</p>
+                                <p> Books:{props.agent.books}</p>
+                          
+                            </div>
+                        </div>
+                      </div>
 	)
 	}
 
@@ -83,29 +81,29 @@ class Listing extends React.Component{
 	
 	render(){
 		
-		console.log("agents",agents)
+		
 		
 		return(
-		<Grid>
-			<Row>
-				<Col md={5} mdOffset={3}>
+		<div className="main-content-wrapper ">
+			<div className="container">
+			<div className="row justify-content-center">
+				<div className="col-12 col-lg-6 mb-15 mt-50">
 					<h3>Search for {this.props.match.params.id}</h3>
-					<div class="form-group">
-					<div class="icon-addon addon-lg">
-                    <input type="text" placeholder="Type the genre here..." class="form-control" id="type"/>
-                    <label for="email" class="glyphicon glyphicon-search" rel="tooltip" title="email"></label>
-                </div>
-            </div>
-		
-		</Col>
-		</Row>
-		<br/>
-		<Row>
+					<div className="form-group">
+						<div className="icon-addon addon-lg">
+							<input type="text" placeholder="Type the genre here..." className="form-control" id="type"/>
+							<label for="email" className="glyphicon glyphicon-search" rel="tooltip" title="email"></label>
+						</div>
+					</div>
+					{agents.map(agent=><AgentListingComponent agent={agent} key={agent.id}/>)}
+				</div>
+			</div>
 			
-			{agents.map(agent=><AgentListingComponent agent={agent} key={agent.id}/>)}
-		</Row>
+			</div>
+			
+		</div>
 		
-		</Grid>
+
 		)
 	
 	}
