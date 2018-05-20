@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+	import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
 import {Row,  Media} from 'react-bootstrap';	
 import Icon from 'react-icons-kit';
@@ -9,25 +9,25 @@ import { starEmpty} from 'react-icons-kit/icomoon/starEmpty';
 class ListComponent extends React.Component {
 				render(){
 					return(
-					     <div class="col-12 col-lg-12 mb-15 mt-15">
-							<div className="single-blog-post post-style-4 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.2s">
-         
-                            <div className="post-thumbnail">
-                                <img src="http://via.placeholder.com/120x180" alt=""/>
-                            </div>
+					     <div class="single-travel media pb-70">
+							<img class="img-fluid d-flex  mr-3" src="img/t1.jpg" alt=""/>
+							  <div class="dates">
+							  	<span>20</span>
+							  	<p>Dec</p>
+							  </div>
                         
-                            <div className="post-content">
-                                <Link to={`/book/${this.props.book.slug}`}  className="headline">
-                                    <h5>{this.props.book.title}</h5>
+                            <div className="media-body align-self-center">
+                                <Link to={`/book/${this.props.book.slug}`}  className="mt-0">
+                                    <h4>{this.props.book.title}</h4>
                                 </Link>
-								<h6><Icon size={14} icon={eye}/> 3.4k <Icon size={14} icon={starEmpty}/> 4.6 </h6>
-                                <p> unripened...</p>
-                                <div className="post-meta">
+								{/*<h6><Icon size={14} icon={eye}/> 3.4k <Icon size={14} icon={starEmpty}/> 4.6 </h6>*/}
+                                <p> unGogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physic.</p>
+                                <div className="meta-bottom d-flex justify-content-between">
                                     <p><Icon size={14} icon={pen}/><Link to={`/`} className="post-author">{this.props.book.author.username}</Link> on <Link to={`/`} className="post-date">Sep 29, 2017 at 9:48 am</Link></p>
                                 </div>
                             </div>
                         </div>
-					</div>
+					
 						)
 						}
 						}

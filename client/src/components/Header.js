@@ -110,17 +110,18 @@ class LoggedInView extends React.Component{
 		
 		return(
 		
-    <header className="header-area ">
-        <div className="container">
+    <header className="default-header">
+        
             <div className="row">
                 <div className="col-12">
-                    <nav className="navbar navbar-expand-lg ">
+                    <nav className="navbar navbar-expand-lg navbar-light">
+                    <div className="container">
                         <Link to="/" className="nav-link">LetterShack</Link>
                        
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#worldNav" aria-controls="worldNav" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
                        
-                        <div className="collapse navbar-collapse" id="worldNav">
-                            <ul className="navbar-nav ml-auto">
+                        <div className="collapse navbar-collapse justify-content-end align-items-center" id="worldNav">
+                            <ul className="navbar-nav">
                                 <li className="nav-item ">
                                     <Link to="myworks" className="nav-link">Write </Link>
                                 </li>
@@ -160,8 +161,8 @@ class LoggedInView extends React.Component{
                                 </form>
                             </div>
                         </div>
-                    </nav>
-                </div>
+                    </div>
+                </nav>
             </div>
         </div>
     </header>
