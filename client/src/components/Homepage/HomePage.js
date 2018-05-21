@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+						import React, { Component } from 'react';
 import { Row, Col, Grid, Media} from 'react-bootstrap';
 import HomePageCard from './HomePageCard';
 import {connect} from 'react-redux';
@@ -71,7 +71,7 @@ class HomePage extends React.Component{
 				<div class="row">
 						<div class="col-lg-3 col-md-6 single-fashion">
 							<img class="img-fluid" src="img/f1.jpg" alt=""/>
-							<p class="date">10 Jan 2018</p>
+							<p class="date ">10 Jan 2018</p>
 							<h4><a href="#">Addiction When Gambling
 							Becomes A Problem</a></h4>
 																
