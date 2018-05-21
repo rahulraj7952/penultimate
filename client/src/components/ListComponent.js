@@ -15,8 +15,8 @@ class ListComponent extends React.Component {
 					     <div class="single-travel media pb-70">
 							<img class="img-fluid d-flex  mr-3" src={img} alt=""/>
 							  <div class="dates">
-							  	<span>20</span>
-							  	<p>Dec</p>
+							  	
+							  	<p>Adventure</p>
 							  </div>
                         
                             <div className="media-body align-self-center">

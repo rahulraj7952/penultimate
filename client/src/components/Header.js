@@ -106,13 +106,13 @@ class LoggedInView extends React.Component{
 		
 		return(
 		
-    <header className="default-header">
+    <header className="default-header font-color-dark">
         
             <div className="row">
                 <div className="col-12">
                     <nav className="navbar navbar-expand-lg navbar-light">
                     <div className="container">
-                        <Link to="/" className="nav-link">LetterShack</Link>
+                        <Link to="/" className="nav-link"><img src="https://fontmeme.com/permalink/180521/fd2edd64af9087897e2866b666fc4852.png" className="logo"/></Link>
                        
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#worldNav" aria-controls="worldNav" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
                        
