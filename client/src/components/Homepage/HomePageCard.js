@@ -12,30 +12,20 @@ class HomePageCard extends React.Component{
 		//const Content= () => (
   //<div dangerouslySetInnerHTML={{ __html: htmlString }} />
   //);
-		return(                 
+		return(               
 				
-                                        <div className="col-12 col-lg-12 mb-15 mt-15">
-                                           
-                                            <div className="single-blog-post post-style-4 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.2s">
-                                               
-                                                <div className="post-thumbnail">
-                                                    <img src="http://via.placeholder.com/150x225"  alt=""/>
+                                        <div className="single-posts cl-12 col-lg-12 mt-15 mb-30">   
+                                                    <img className="img-fluid" src="img/asset/p1.jpg"  alt=""/>
                                                     
-                                                    <div className="post-cta"><a href="#">{this.props.book.genre}</a></div>
-                                                </div>
-                                               
-                                                <div className="post-content">
-                                                    <Link to={`/book/${this.props.book.slug}` }className="headline">
+                                                    <div class="date mt-20 mb-20">10 Jan 2018</div>
+													<Link to={`/book/${this.props.book.slug}` }className="text-uppercase">
                                                         <h5>{this.props.book.title}</h5>
                                                     </Link>
-                                                    <p>1208How Did van Gogh’s Turbulent Mind Depict One of thein...</p>
-                                              
-                                                    <div className="post-meta">
-                                                        <p><Link to={`/@${this.props.book.author.username}`} className="post-author">{this.props.book.author.username}</Link> on <Link to="/" className="post-date">{this.props.book.createdAt}</Link></p>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                             
+                                            
+                                    
+                                              
                           
                              
 				)

@@ -36,13 +36,9 @@ const Notification=props =>{
 
 		<div className="col-12 col-lg-12">
 							<div className="single-blog-post post-style-2 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.2s">
-         
-                            <div className="post-thumbnail">
-                                <img className ="img-circle" src="http://via.placeholder.com/60x60" alt="" />
-                            </div>
                         
                             <div className="post-content">
-                                <Link to={`/book/${props.notification.link}`}  className="headline">
+                                <Link to={`/book/${props.notification.link}`}  className="dropdown-item">
                                     <p><b>{notificationMessage}</b></p>
                                     <p><i>{time}</i></p>
                                 </Link>
@@ -81,13 +77,13 @@ const LoggedOutView=props=>{
                                 </li>
                                
                             </ul>
-                            <div id="search-wrapper">
+                            {/*<div id="search-wrapper">
                                 <form action="#">
                                     <input type="text" id="search" placeholder="Search something..."/>
                                     <div id="close-icon"></div>
                                     <input className="d-none" type="submit" value=""/>
                                 </form>
-                            </div>
+                            </div>*/}
                         </div>
                     </nav>
                 </div>
@@ -145,7 +141,7 @@ class LoggedInView extends React.Component{
                                 <li className="nav-item">
                                 <Link to={`/@${this.props.currentUser.username}`} className="nav-link">
 									<img src={this.props.currentUser.image} className="user-pic"  />
-								<strong>{this.props.currentUser.username}</strong>
+								{this.props.currentUser.username}
 								</Link>
 								</li>
                                 <li className="nav-item">
@@ -153,13 +149,13 @@ class LoggedInView extends React.Component{
                                 </li>
                                
                             </ul>
-                            <div id="search-wrapper">
+                           {/* <div id="search-wrapper">
                                 <form action="#">
                                     <input type="text" id="search" placeholder="Search something..."/>
                                     <div id="close-icon"></div>
                                     <input className="d-none" type="submit" value=""/>
                                 </form>
-                            </div>
+                            </div>*/}
                         </div>
                     </div>
                 </nav>

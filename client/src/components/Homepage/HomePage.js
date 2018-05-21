@@ -60,9 +60,9 @@ class HomePage extends React.Component{
 		
 			const homePagePosts=this.props.homePageBooks.books?this.props.homePageBooks.books.map(book => <span><HomePageCard book={book} key={book.slug}/></span>):"loading bro"
 			
-			const genre1=this.props.genre1?<span><MultipleItemCarousel title={"Recommended"} books={this.props.genre1.books}/>
-						<MultipleItemCarousel title={"Horror"} books={this.props.genre1.books}/>
-						<MultipleItemCarousel title={"Adventure"} books={this.props.genre1.books}/></span>:"Loading bro"
+			const genre1=this.props.genre1?<span><MultipleItemCarousel title={"Recent Uploads"} books={this.props.genre1.books}/>
+						<MultipleItemCarousel title={"Picks of the month"} books={this.props.genre1.books}/>
+						<MultipleItemCarousel title={"Picks of the week"} books={this.props.genre1.books}/></span>:"Loading bro"
 						
 			 
 		return(
@@ -121,10 +121,10 @@ class HomePage extends React.Component{
 								<p><span class="lnr lnr-bubble"></span> 02 Comments</p>
 							</div>									
 						</div>	
-						<a href="#" class="primary-btn load-more pbtn-2 text-uppercase mx-auto mt-60">Load More </a>						
+							<hr/>				
 					</div>
 					<div class="row d-flex justify-content-center">
-						<div class="menu-content pb-70 col-lg-8">
+						<div class="menu-content mt-50 pb-50 col-lg-8">
 							<div class="title text-center">
 								<h1 class="mb-10">Hot topics from Travel Section</h1>
 								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore magna aliqua.</p>
@@ -134,7 +134,13 @@ class HomePage extends React.Component{
                         
                     {genre1}
                     <h4 className="mt-15"> Featured Books</h4>
+                    <div class="top-posts">
+                            <div class="container">
+                                <div class="row">   
                     {homePagePosts}
+                    </div>
+                    </div>
+                    </div>
                 </div>
 					{/*<Sidebar/>*/}
             

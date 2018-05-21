@@ -28,7 +28,7 @@ const mapDispatchToProps = dispatch => ({
 const TableOfContents=props =>{
 	console.log("Table of contents", props.chapter.title);
 	return(
-		<a onClick={()=>props.SetChapter(props.chapter)}><div className="chapter-name mt-15">{props.chapter.title} </div></a>
+		<li onClick={()=>props.SetChapter(props.chapter)} className="chapter-name mt-15">{props.chapter.title} </li>
 	)
 	
 	}
@@ -90,10 +90,10 @@ const title = 'GitHub';
       <div className="main-content-wrappe">
         <div className="container " >
             <div className="row justify-content-center  ">
-                <div className="col-12 col-lg-2 mt-50">
-			    <img className="img-fluid" src="http://via.placeholder.com/120x180" alt=""/>	
+                <div className="col-12 col-lg-2 mt-80">
+			    <img className="img-fluid" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSK-qtteyP3xOU0Fcgpquy8DZnPEK92I59jY2iKB82_aNKforfx" alt=""/>	
 			    </div>
-			    <div className="col-12 col-lg-6 mt-50">
+			    <div className="col-12 col-lg-6 mt-80">
 					<div className="plain-div">
 						<h1 className="mb-15">{this.props.book.title}</h1>
 							<h4>{this.props.book.genre}</h4>
@@ -102,14 +102,14 @@ const title = 'GitHub';
 									</Link>
 							</span>
 					</div>
-					<div className="plain-div mt-15">
+					<div className="plain-div mt-30">
 						<ChapterComponent chapter={this.props.chapter}/>
 					</div>
 
 				</div>
-				<div className="col-12 col-lg-4 mt-50">
+				<div className="col-12 col-lg-4 mt-80 single_widget cat_widget">
 					<h4>Table of Contents</h4>
-					{this.props.book.chapters.map(chapter=><TableOfContents chapter={chapter} SetChapter={this.SetChapter}/>)}
+					<ul>{this.props.book.chapters.map(chapter=><TableOfContents chapter={chapter} SetChapter={this.SetChapter}/>)}</ul>
 				</div>
 			</div>	
 			

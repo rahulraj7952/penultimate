@@ -8,9 +8,12 @@ import { starEmpty} from 'react-icons-kit/icomoon/starEmpty';
 		
 class ListComponent extends React.Component {
 				render(){
+					
+					 const img="img/t"+(Math.floor(Math.random() * 4) + 1)+".jpg";
+					
 					return(
 					     <div class="single-travel media pb-70">
-							<img class="img-fluid d-flex  mr-3" src="img/t1.jpg" alt=""/>
+							<img class="img-fluid d-flex  mr-3" src={img} alt=""/>
 							  <div class="dates">
 							  	<span>20</span>
 							  	<p>Dec</p>

@@ -7,21 +7,23 @@ import ListComponent from "./ListComponent"
 export default class MultipleItemsCarousel extends Component {
   render() {
 	  
+	 
+	  
 	  
     const settings = {
       dots: false,
       infinite: true,
       speed: 500,
-      slidesToShow: 2,
+      slidesToShow: 2.2,
       slidesToScroll: 1,
       rtl:true
     };
     
     return (
    <span >
-	<h3 className="mb-7 mt-7">{this.props.title}</h3>
+	<h3 className="pb-35 mt-15">{this.props.title}</h3>
 	<span className="row">
-     <span className="col-lg-12 travel-left" dir="rtl"><Slider {...settings}>
+     <span className="col-lg-12 mt-15 travel-left" dir="rtl"><Slider {...settings}>
          { this.props.books.map(book => <span><ListComponent book={book} key={book.slug}/></span>)}
       </Slider></span>
     </span>
