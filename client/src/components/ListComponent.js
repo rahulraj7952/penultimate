@@ -29,6 +29,7 @@ class ListComponent extends React.Component {
                                     <p><Icon size={14} icon={pen}/><Link to={`/`} className="post-author">{this.props.book.author.username}</Link> on <Link to={`/`} className="post-date">Sep 29, 2017 at 9:48 am</Link></p>
                                 </div>
                             </div>
+                            <hr/>
                         </div>
 					
 						)
